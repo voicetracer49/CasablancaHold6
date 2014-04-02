@@ -4,12 +4,18 @@
  * and open the template in the editor.
  */
 
-package DataSourcelayer;
+package DataSource;
+
+import Domain.Reservation;
 
 /**
  *
- * @author Ejer
+ * @author Anders Kjær
  */
-public class Mapper {
+public interface ReservationMapperInterface {
+    
+    boolean saveReservation(Reservation r);
+    
     
 }
+
