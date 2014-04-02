@@ -9,20 +9,22 @@ import Datasource.*;
 import oracle.sql.DATE;
 public class Controller
 {
-
+    private ActivityReservation newActivity;
+    private Guests newGuest;
     private Reservation currentReservation;   // order in focus
     private DBFacade dbf;  //ref.Variabel til instans af DBFacade
     
     public Controller()
     {
-        currentReservation = null;
+        
+       currentReservation = null;
         dbf = DBFacade.getInstance();  // afhængig af navngivning i DBFacade?   
     }
-    public Reservation createNewReservation(int roomNummerID,int roomTypeID, DATE reservationFrom,DATE reservationTo, char reservationConfirmed, DATE reservationCreated,DATE reservationModifyed, char reservationDeleted) // skal sættes fra reservationDetailClassen ! 
+    public Reservation createNewReservation(int reservationID,int roomID , DATE dateArrival, DATE checkOut , boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
      // int reservationId hentes og den medsendes i NewReservation her ovenfor??   __ Længden på tabellernes atributter bør forkortes!  Date datatype ukendt !
     {
         //== create order object with ReservationID=0
-        currentReservation = new Reservation(0 ,roomNummerID ,roomTypeID ,reservationFrom ,reservationTo ,reservationConfirmed ,reservationCreated ,reservationModifyed ,reservationDeleted);
+        currentReservation = new Reservation(0, roomID , dateArrival, checkOut ,Confirmed);  
                 //== save and get DB-generated unique reservationID
     boolean status = dbf.saveNewReservation(currentReservation);
         if (!status) //fail!
@@ -34,10 +36,14 @@ public class Controller
     }
     
      String list;
-     public availableRooms getAvailableRooms(int ){   // select * frpm 
+     public availableRooms getAvailableRooms(int )
      
+     {   // select * frpm   vores allesammens SQL STATEMENT !!!!
      
-     return list;
+     System.out.println(list);  // Vides ej med al ønskelig sikkerhed !!!
+     
+     return list; // altid sidst
+         
      }   
     
      public Reservation getReservation(Number reservationID)
@@ -45,6 +51,18 @@ public class Controller
         currentReservation = dbf.getReservation(reservationID);
         return currentReservation;
     }
+     // --------create new guest
+    public Guests createNewGuest(String fName, String lname, String address, String country, int phoneNo, String eMail, int passportNo, int reservationId, String pinCode )
+    {
+    
+    return newGuest;// hvad vi returnerer afhænger af om returntype er BOOLEAN, STRING eller guest til Gui
+    
+    }
+    public ActivityReservation createActivity()
+    {
+    return newActivity;
+    }
+    
     
     
     

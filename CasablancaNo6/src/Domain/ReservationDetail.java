@@ -14,12 +14,12 @@ import oracle.sql.DATE;
 public class ReservationDetail
 {
 
-    ArrayList<GuestDetail> gd;
+    ArrayList<Guests> gd;
     String roomType;
     boolean deposit;
     DATE date;    // sørgsmål om der ikke her skal benyttes Java Datatyper
 
-    public ReservationDetail(ArrayList<GuestDetail> gd, String roomType, boolean deposit, DATE date) // Skal der ikke stå <reservationDetail> her ?
+    public ReservationDetail(ArrayList<Guests> gd, String roomType, boolean deposit, DATE date) // Skal der ikke stå <reservationDetail> her ?
     {
         this.gd = gd;
         this.roomType = roomType;

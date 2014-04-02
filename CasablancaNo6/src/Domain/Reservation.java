@@ -1,40 +1,29 @@
 package Domain;
 
-import java.util.ArrayList;
-import oracle.sql.DATE;
+import oracle.sql.DATE; // souce organise import = sikre at du kun har dem du skal bruge!
+
 /**
  * @author Anders Kjær, Ruben Juul
  */
-public class Reservation 
-{
+public class Reservation {
 
-/// DataType fungerer ikke  /// ATRIBUTTER tblRecervation /////////////
-            private int reservationID; // NUMBER// PRIMARY KEY (reservationID)                                                   
-            private int roomNumberID;
-            private int roomTypeID; // NUMBER                   // FOREIGN KEY (roomTypeID) References tblRoomType
-            private DATE reservationFrom; // DATE               // A FK that should be mapped to a reference ??????????//RJ_NOTE//private ArrayList<OrderDetail> orderDetails; 
-            private DATE reservationTo; // DATE                  
-            private char reservationConfirmed; // Char(1)
-            private DATE reservationCreated; // DATE,
-            private DATE reservationModifyed; // DATE,
-            private char reservationDeleted; // char(1),
-            private ArrayList<ReservationDetail> resDetails;
+    // ATRIBUTTER tblRecervation 
+    private int reservationID; // NUMBER// PRIMARY KEY (reservationID)                                                   
+    private int roomID; // FOREIGN KEY (roomTypeID) References tblRoomType
+    private DATE dateArrival; // DATE//
+    private DATE checkOut; // DATE                  
+    private boolean Confirmed; // Char(1) 
 
-        public Reservation(int resId, int romNum ,int romtyp, DATE resfro, DATE resTo, char resCon, DATE resCre, DATE resMod, char resDel) 
-        {
-            reservationID = resId;
-            roomNumberID = romNum;
-            roomTypeID = romtyp;
-            reservationFrom = resfro;
-            reservationTo = resTo;
-            reservationConfirmed = resCon;
-            reservationCreated = resCre;
-            reservationModifyed = resMod;
-            reservationDeleted = resDel;
-            resDetails = new ArrayList<ReservationDetail>();
-        }
+    public Reservation(int reservationID, int roomID, DATE dateArrival, DATE checkOut, boolean Confirmed) {
+        this.reservationID = reservationID;
+        this.roomID = roomID;
+        this.dateArrival = dateArrival;
+        this.checkOut = checkOut;
+        this.Confirmed = Confirmed;
 
-    //== accessors
+    }
+    // husk: inde i classen, opret med Højreklik "insert Code"        
+
     public int getReservationID() {
         return reservationID;
     }
@@ -43,54 +32,42 @@ public class Reservation
         this.reservationID = reservationID;
     }
 
-    public void setRoomNumberID(){
-        this.roomNumberID = roomNumberID;
-        
-    }
-    public void setRoomType(int romtyp) {
-        this.roomTypeID = romtyp;
-    }
-    
-
-    public void setReservationFrom(DATE  resfro) {
-        this.reservationFrom = resfro;
+    public int getRoomID() {
+        return roomID;
     }
 
-    public void setReservationTo(DATE  resTo) {
-        this.reservationTo = resTo;
+    public void setRoomID(int roomID) {
+        this.roomID = roomID;
     }
 
-    public void setReservationConfirmed(char resCon) {
-        this.reservationConfirmed = resCon;
+    public DATE getDateArrival() {
+        return dateArrival;
     }
 
-    public void setReservationCreated (DATE resCre) {
-         this.reservationCreated = resCre;
+    public void setDateArrival(DATE dateArrival) {
+        this.dateArrival = dateArrival;
     }
 
-    public void setReservationModifyed(DATE resMod) {
-        this.reservationModifyed = resMod;
+    public DATE getCheckOut() {
+        return checkOut;
     }
 
-    public void setReservationDeleted(char resDel) {
-        this.reservationDeleted = resDel;
+    public void setCheckOut(DATE checkOut) {
+        this.checkOut = checkOut;
     }
-    
-//   _______________________________set list ReservationDetail
 
-    public void addDetail(ReservationDetail rdLIst) {
-        resDetails.add(rdLIst);
-    }  
+    public boolean isConfirmed() {
+        return Confirmed;
+    }
 
+    public void setConfirmed(boolean Confirmed) {
+        this.Confirmed = Confirmed;
+    }
+
+    // husk bagefter indefor classen, men efter den netop på samme vis oprettede construktor , oprettes Setter&getter
+    @Override
     public String toString() {
-        return reservationID + " " + roomTypeID + " " + reservationFrom + " " + reservationTo + " " + reservationConfirmed + " " + reservationCreated + " " + reservationModifyed + " " + reservationDeleted;
+        return "Reservation{" + "reservationID=" + reservationID + ", roomID=" + roomID + ", dateArrival=" + dateArrival + ", checkOut=" + checkOut + ", Confirmed=" + Confirmed + '}';
     }
-    
-    String detailsToString() {
-        String res = "";
-        for (int i = 0; i < resDetails.size(); i++) {
-            res += resDetails.get(i).toString() + "\n";
-        }
-        return res;
-    }
+   // på samme vis toString via Insert code 
 }
