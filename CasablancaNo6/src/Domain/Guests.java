@@ -16,7 +16,7 @@ public class Guests {
     int passportNo;
     int reservationId;
     String pinCode; // String/warshar2 så guest helt selv kan vælge code bogstaver/tal ?
-    
+   
     // herunder konstruktor
     public Guests(String fName, String lName, String address, String country, int phoneNumber, String email, int passportNo, int reservationId, String pinCode) {
         this.fName = fName;
@@ -31,5 +31,6 @@ public class Guests {
       // via.. højreklik/insert code
     }
    //insert setter setter/getters, hvis Nødvendigt via ...  
+
 }
 

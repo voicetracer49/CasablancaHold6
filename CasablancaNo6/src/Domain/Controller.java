@@ -1,3 +1,4 @@
+
 package Domain;
 /*
  * @author https://github.com/voicetracer49/CphBussiness-2semOpgave.git
@@ -20,11 +21,11 @@ public class Controller
        currentReservation = null;
         dbf = DBFacade.getInstance();  // afhængig af navngivning i DBFacade?   
     }
-    public Reservation createNewReservation(int reservationID,int roomID , DATE dateArrival, DATE checkOut , boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
+    public Reservation createNewReservation(int reservationID,int roomID , DATE checkIn, DATE checkOut , boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
      // int reservationId hentes og den medsendes i NewReservation her ovenfor??   __ Længden på tabellernes atributter bør forkortes!  Date datatype ukendt !
     {
         //== create order object with ReservationID=0
-        currentReservation = new Reservation(0, roomID , dateArrival, checkOut ,Confirmed);  
+        currentReservation = new Reservation(0, roomID , checkIn, checkOut ,Confirmed);  
                 //== save and get DB-generated unique reservationID
     boolean status = dbf.saveNewReservation(currentReservation);
         if (!status) //fail!
@@ -36,7 +37,7 @@ public class Controller
     }
     
      String list;
-     public availableRooms getAvailableRooms(int )
+     public availableRooms getAvailableRooms(DATE checkIN, DATE checkOut ) //?? )   men metode  skal orettes i mapper og dbfacede dbf
      
      {   // select * frpm   vores allesammens SQL STATEMENT !!!!
      
@@ -46,7 +47,7 @@ public class Controller
          
      }   
     
-     public Reservation getReservation(Number reservationID)
+     public Reservation getReservation(int reservationID)
     {
         currentReservation = dbf.getReservation(reservationID);
         return currentReservation;
@@ -56,15 +57,34 @@ public class Controller
     {
     
     return newGuest;// hvad vi returnerer afhænger af om returntype er BOOLEAN, STRING eller guest til Gui
+      
+    }  //  guest kan vel oprettes ligesom reservation her i Controller ? ///////  ???  ///////
     
-    }
+     
+//       currentGuest = null;
+//        dbf = DBFacade.getInstance();  // afhængig af navngivning i DBFacade?   
+//    
+//    public Reservation createNewGuest(int reservationID,int roomID , DATE dateArrival, DATE checkOut , boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
+//     // int reservationId hentes og den medsendes i NewReservation her ovenfor??   __ Længden på tabellernes atributter bør forkortes!  Date datatype ukendt !
+//    {
+//        //== create order object with ReservationID=0
+//        currentGuest = new Guest(0, roomID , dateArrival, checkOut ,Confirmed);  
+//                //== save and get DB-generated unique reservationID
+//    boolean status = dbf.saveNewGuest(currentGuest);
+//        if (!status) //fail!
+//        {
+//            currentGuest = null;
+//        }
+//
+//        return currentGuest;
+//    }
+     
+    
+      
     public ActivityReservation createActivity()
     {
-    return newActivity;
-    }
-    
-    
-    
+    return newActivity;  
+    }   
     
 }
 

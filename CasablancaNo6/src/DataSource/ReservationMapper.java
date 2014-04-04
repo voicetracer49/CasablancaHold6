@@ -19,11 +19,11 @@ public class ReservationMapper
 
     public Reservation getReservation(int reservarionID, Connection con)
     {
-        Reservation o = null;
+        Reservation res = null;
         String SQLString1 = // get order
-                "select * from tblReservation where reservationID = ?";
+                "select * from G6_Reservation where reservationID = ?";
         String SQLString2 = // get order details
-                "select od.pno, od.qty from tbl od where od.reservationID = ? "; // foreign key match 
+                "select resd.pno, resd.qty from tbl od where od.reservationID = ? "; // foreign key match 
         PreparedStatement statement = null;
 
         try
@@ -34,7 +34,7 @@ public class ReservationMapper
             ResultSet rs = statement.executeQuery();
             if (rs.next())
             {
-                o = new Reservation(reservationID,
+                res = new Reservation(reservationID,
                         rs.getInt(2),
                         rs.getInt(3),
                         rs.getString(4),
@@ -45,9 +45,9 @@ public class ReservationMapper
             statement = con.prepareStatement(SQLString2);
             statement.setInt(1, reservationID);          // foreign key value
             rs = statement.executeQuery();
-            while (rs.next())
+            while (rs.next())   //?
             {
-                o.addDetail(new reservationDetail(reservationID,rs.getInt(1),rs.getInt(2)));
+                res.addDetail(new reservationDetail(reservationID,rs.getInt(1),rs.getInt(2)));
             }
         } catch (Exception e)
         {
@@ -64,11 +64,11 @@ public class ReservationMapper
                 System.out.println(e.getMessage());
             }
         }
-        return o;
+        return res;
     }
 
     //== Insert new order (tuple)
-    public boolean saveNewOrder(Reservation o, Connection con)
+    public boolean saveNewReservation(Reservation res, Connection con)
     {
         int rowsInserted = 0;
         String SQLString1 =
@@ -84,20 +84,20 @@ public class ReservationMapper
             ResultSet rs = statement.executeQuery();
             if (rs.next())
             {
-                o.setOno(rs.getInt(1));
+                res.setOno(rs.getInt(1));
             }
 
             //== insert tuple
             statement = con.prepareStatement(SQLString2);
-            statement.setInt(1, o.getOno());
-            statement.setInt(2, o.getCustomerNo());
-            statement.setInt(3, o.getEmployeeNo());
-            statement.setString(4, o.getReceived());
-            statement.setString(5, o.getShipped());
+            statement.setInt(1, res.getOno());
+            statement.setInt(2, res.getCustomerNo());
+            statement.setInt(3, res.getEmployeeNo());
+            statement.setString(4, res.getReceived());
+            statement.setString(5, res.getShipped());
             rowsInserted = statement.executeUpdate();
         } catch (Exception e)
         {
-            System.out.println("Fail in OrderMapper - saveNewOrder");
+            System.out.println("Fail in OrderMapper - saveNewReservation");
             System.out.println(e.getMessage());
         } finally // must close statement
         {
@@ -106,7 +106,7 @@ public class ReservationMapper
                 statement.close();
             } catch (SQLException e)
             {
-                System.out.println("Fail in OrderMapper - saveNewOrder");
+                System.out.println("Fail in OrderMapper - saveNewreservation");
                 System.out.println(e.getMessage());
             }
         }
@@ -114,11 +114,11 @@ public class ReservationMapper
     }
 
     //== Insert new order detail (tuple)
-    public boolean saveNewOrderDetail(OrderDetail od, Connection con)
+    public boolean saveNewReservationDetail(reservationDetail resd, Connection con)
     {
         int rowsInserted = 0;
         String SQLString =
-                "insert into odetails "
+                "insert into odetails "  //?
                 + "values (?,?,?)";
         PreparedStatement statement = null;
 
@@ -126,13 +126,13 @@ public class ReservationMapper
         {
             //== insert tuple
             statement = con.prepareStatement(SQLString);
-            statement.setInt(1, od.getOno());
-            statement.setInt(2, od.getPno());
-            statement.setInt(3, od.getQty());
+            statement.setInt(1, resd.getOno());
+            statement.setInt(2, resd.getPno());
+            statement.setInt(3, resd.getQty());
             rowsInserted = statement.executeUpdate();
         } catch (Exception e)
         {
-            System.out.println("Fail in OrderMapper - saveNewOrderDetail");
+            System.out.println("Fail in OrderMapper - saveNewReservationDetail");
             System.out.println(e.getMessage());
         } finally // must close statement
         {
