@@ -5,7 +5,7 @@ package Domain;
  * http://www.git-tower.com/learn/version-control-best-practices.html
  */
 
-import Datasource.*;
+import DataSource.DBFacade;
 import java.sql.Date;
 import oracle.sql.DATE;
 
@@ -24,20 +24,20 @@ public class Controller {
         dbf = DBFacade.getInstance();  // afhængig af navngivning i DBFacade?   
     }
 
-    public Reservation createNewReservation(int reservationID, int roomID, DATE checkIn, DATE checkOut, boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
-    // int reservationId hentes og den medsendes i NewReservation her ovenfor??   __ Længden på tabellernes atributter bør forkortes!  Date datatype ukendt !
-    {
-        //== create order object with ReservationID=0
-        currentReservation = new Reservation(0, roomID, checkIn, checkOut, Confirmed);
-        //== save and get DB-generated unique reservationID
-        boolean status = dbf.saveNewReservation(currentReservation);
-        if (!status) //fail!
-        {
-            currentReservation = null;
-        }
-
-        return currentReservation;
-    }
+//    public Reservation createNewReservation(int reservationID, int roomID, DATE checkIn, DATE checkOut, boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
+//    // int reservationId hentes og den medsendes i NewReservation her ovenfor??   __ Længden på tabellernes atributter bør forkortes!  Date datatype ukendt !
+//    {
+//        //== create order object with ReservationID=0
+//        currentReservation = new Reservation(0, roomID, checkIn, checkOut, Confirmed);
+//        //== save and get DB-generated unique reservationID
+//        boolean status = dbf.saveNewReservation(currentReservation);
+//        if (!status) //fail!
+//        {
+//            currentReservation = null;
+//        }
+//
+//        return currentReservation;
+//    }
 
 
 
@@ -51,10 +51,10 @@ public class Controller {
         return currentAvailableRooms;
     }
 
-    public Reservation getReservation(int reservationID) {
-        currentReservation = dbf.getReservation(reservationID);
-        return currentReservation;
-    }
+//    public Reservation getReservation(int reservationID) {
+//        currentReservation = dbf.getReservation(reservationID);
+//        return currentReservation;
+//    }
 
     // --------create new guest
     public Guests createNewGuest(String fName, String lname, String address, String country, int phoneNo, String eMail, int passportNo, int reservationId, String pinCode) {

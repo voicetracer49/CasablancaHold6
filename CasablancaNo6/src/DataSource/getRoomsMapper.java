@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package DataSource;
-import oracle.sql.DATE;
 import Domain.AvailableRooms;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,6 +65,10 @@ public class getRoomsMapper {
             }
         }
         return rowsInserted == 1;
+    }
+
+    boolean getAvailableRooms(AvailableRooms ar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

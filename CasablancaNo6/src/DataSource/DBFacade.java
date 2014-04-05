@@ -1,7 +1,8 @@
 package DataSource;
 
+import Domain.AvailableRooms;
+import Domain.Reservation;
 import java.sql.Connection;
-import domain.*;
 /**
  *
  * @author Anders Kjær, Ruben Juul, Marcus Ulsø
@@ -20,10 +21,10 @@ public class DBFacade {
 	  //== Singleton start
 	  private static DBFacade instance;
 	 
-	  private DBFacade() {
+	  public DBFacade() {
 		  rm 	= new ReservationMapper(); // http://dadicy.wordpress.com/2007/10/29/what-do-you-mean-by-static-in-java/
 		  con 	= new DBConnector().getConnection();  // the connection will be released upon program 
-		  arm   = new getRoomsMapper();					     // termination by the garbage collector		  
+		  arm   = new getRoomsMapper(con);					     // termination by the garbage collector		  
 	  }
 	  public static DBFacade getInstance()
 	  {
@@ -34,23 +35,20 @@ public class DBFacade {
 	  //== Singleton end!
 
 	  
-	  public Reservation getReservation(int reservationID) 
-	  {
-		  return rm.getReservation(reservationID, con);	   // rm. er ReservationMapper, con. er new connection 
-	  }
+//	  public Reservation getReservation(int reservationID) 
+//	  {
+//		  return rm.getReservation(reservationID, con);	   // rm. er ReservationMapper, con. er new connection 
+//	  }
 	  
-	  public boolean saveNewReservation(Reservation o)
-	  { 
-	    return rm.saveNewReservation(o, con); // rm. er ReservationMapper 
-	  }
+//	  public boolean saveNewReservation(Reservation o)
+//	  { 
+//	    return rm.saveNewReservation(o, con); // rm. er ReservationMapper 
+//	  }
           public boolean getAvailableRooms(AvailableRooms ar)
           {
               return arm.getAvailableRooms(ar);
           }	  
-//	  public boolean saveNewReservationDetail(reservationDetail od)
-//	  {
-//	    return rm.saveNewReservationDetail(od, con);  // rm. er ReservationMapper
-//	  }
+
 	
 }
 ////
