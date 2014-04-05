@@ -44,7 +44,7 @@ public class DBFacade {
 //	  { 
 //	    return rm.saveNewReservation(o, con); // rm. er ReservationMapper 
 //	  }
-          public boolean getAvailableRooms(AvailableRooms ar)
+          public AvailableRooms getAvailableRooms(AvailableRooms ar)
           {
               return arm.getAvailableRooms(ar);
           }	  

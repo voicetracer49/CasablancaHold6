@@ -7,7 +7,6 @@ package Domain;
 
 import DataSource.DBFacade;
 import java.sql.Date;
-import oracle.sql.DATE;
 
 public class Controller {
 
@@ -43,10 +42,9 @@ public class Controller {
 
     public AvailableRooms getAvailableRooms(Date checkIn, Date checkOut) {
         currentAvailableRooms = new AvailableRooms(checkIn, checkOut);
-        boolean status = facade.getAvailableRooms(currentAvailableRooms);
-        if (!status) {
-            currentAvailableRooms = null;
-        }
+        AvailableRooms status;
+        status = facade.getAvailableRooms(currentAvailableRooms);
+        
 
         return currentAvailableRooms;
     }

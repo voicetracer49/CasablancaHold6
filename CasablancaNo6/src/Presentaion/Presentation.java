@@ -115,6 +115,10 @@ public class Presentation extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        jDateChooser1.setDateFormatString("DD-MOM-YY");
+
+        jDateChooser2.setDateFormatString("DD-MOM-YY");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -240,12 +244,13 @@ public class Presentation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void UpdateAvailableListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAvailableListActionPerformed
-        String checkIn = "";
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yy");
-        checkIn = sdf.format(jDateChooser1.getDate());
+        java.util.Date In = jDateChooser1.getDate();
+        java.util.Date out = jDateChooser2.getDate();
+        System.out.println(In);
+        java.sql.Date checkIn = new java.sql.Date(In.getTime());
+        java.sql.Date checkOut = new java.sql.Date(out.getTime());
         System.out.println(checkIn);
-//        Date checkOut = (java.sql.Date)jDateChooser2.getDate();
-//        AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
+        AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
 
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 

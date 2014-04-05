@@ -8,8 +8,7 @@ import Domain.AvailableRooms;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.ResultSet;
 
 /**
  *
@@ -22,53 +21,57 @@ public class getRoomsMapper {
         this.con = con;
     }
 
-    public boolean getRoomsMapper(AvailableRooms ar) {
-        int rowsInserted = 0;        
+    public AvailableRooms getAvailableRooms(AvailableRooms ar) {
+        System.out.println(ar.getCheckIn());
+               
         String SQLString1
-                = "Select RoomID, ROOMNO, ROOMTYPE From G6_Rooms \n"
-                + "where RoomID not in \n"
-                + "(Select RoomID From G6_RESERVATION b \n"
-                + " Where((b.CheckIn <= to_date('?','DD-MON-YY') and to_date('?','DD-MON-YY') <= b.Checkout )"
-                + " or (b.CheckIn <= to_date('?','DD-MON-YY') and to_date('?','DD-MON-YY') <= b.Checkout )"
-                + " or (b.CheckIn >= to_date('?','DD-MON-YY') and to_date('?','DD-MON-YY') >= b.Checkout )"
-                + " or (b.CheckIn >= to_date('?','DD-MON-YY') and to_date('?','DD-MON-YY') >= b.Checkout )))"
-                + " order by G6_Rooms.ROOMNO; ";
+                = "Select RoomID, ROOMNO, ROOMTYPE From G6_Rooms "
+                + "where RoomID not in "
+                + "(Select RoomID From G6_RESERVATION b "
+                + " Where((b.CheckIn <= to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD') <= b.Checkout )"
+                + " or (b.CheckIn <= to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD') <= b.Checkout )"
+                + " or (b.CheckIn >= to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD') >= b.Checkout )"
+                + " or (b.CheckIn >= to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD') >= b.Checkout )))"
+                + " order by ROOMNO ";
         PreparedStatement statement = null;
 
         try {      //== insert tuple
+            
             statement = con.prepareStatement(SQLString1);
             statement.setDate(1, ar.getCheckIn());
-            statement.setDate(2, ar.getCheckIn());
+            statement.setDate(2, ar.getCheckOut());
             statement.setDate(3, ar.getCheckIn());
             statement.setDate(4, ar.getCheckIn());
             statement.setDate(5, ar.getCheckOut());
             statement.setDate(6, ar.getCheckOut());
             statement.setDate(7, ar.getCheckIn());
             statement.setDate(8, ar.getCheckOut());
-            rowsInserted = statement.executeUpdate();
-            con.commit();
-        } catch (SQLException e) {
-            try {
-                con.rollback();
-                System.out.println("Fail in OrderMapper - saveNewOrder");
-                System.out.println(e.getMessage());
-            } catch (SQLException ex) {
-                Logger.getLogger(ReservationMapper.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("1");
+            ResultSet rs = statement.executeQuery();
+            System.out.println("2");
+            while(rs.next()){
+                
+                
             }
+
+            
+        } catch (SQLException e) {
+            
+                System.out.println("Fail in getRoomsMapper - getAvailableRooms");
+                System.out.println(e.getMessage());
+            
         } finally // must close statement
         {
             try {
-                statement.close();
+                if(statement != null){
+                    statement.close();
+                }
+                
             } catch (SQLException e) {
-                System.out.println("Fail in OrderMapper - saveNewOrder");
+                System.out.println("Fail in getRoomsMapper - getAvailableRooms");
                 System.out.println(e.getMessage());
             }
         }
-        return rowsInserted == 1;
+        return ar;
     }
-
-    boolean getAvailableRooms(AvailableRooms ar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

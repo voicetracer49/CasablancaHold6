@@ -14,14 +14,16 @@ import java.util.ArrayList;
  * @author Anders Kjær
  */
 public class AvailableRooms {
-    Date checkIn;
-    Date checkOut;
-    ArrayList<Rooms> aRooms = null;
+    java.sql.Date checkIn;
+    java.sql.Date checkOut;
+    ArrayList<Object> aRooms = new ArrayList();
 
     public AvailableRooms(Date checkIn, Date checkOut) {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
+
+    
 
     public Date getCheckIn() {
         return checkIn;
