@@ -39,7 +39,7 @@ public class Controller {
         return currentReservation;
     }
 
-    String list;
+
 
     public AvailableRooms getAvailableRooms(Date checkIn, Date checkOut) {
         currentAvailableRooms = new AvailableRooms(checkIn, checkOut);

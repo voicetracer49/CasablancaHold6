@@ -22,4 +22,12 @@ public class AvailableRooms {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
+
+    public Date getCheckIn() {
+        return checkIn;
+    }
+
+    public Date getCheckOut() {
+        return checkOut;
+    }
 }

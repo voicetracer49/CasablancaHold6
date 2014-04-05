@@ -23,7 +23,7 @@ public class DBFacade {
 	  private DBFacade() {
 		  rm 	= new ReservationMapper(); // http://dadicy.wordpress.com/2007/10/29/what-do-you-mean-by-static-in-java/
 		  con 	= new DBConnector().getConnection();  // the connection will be released upon program 
-		  arm    = new getRoomsMapper();					     // termination by the garbage collector		  
+		  arm   = new getRoomsMapper();					     // termination by the garbage collector		  
 	  }
 	  public static DBFacade getInstance()
 	  {

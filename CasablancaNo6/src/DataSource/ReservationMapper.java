@@ -21,7 +21,14 @@ public class ReservationMapper
     {
         Reservation res = null;
         String SQLString1 = // get order
-                "select * from G6_Reservation where reservationID = ?";
+                "Select RoomID, ROOMNO, ROOMTYPE From G6_Rooms  -- rooms der Ikke ér booked i perioden 4 -10 sep --Den vi skal bruge !\n" +
+"where RoomID not in\n" +
+"( Select RoomID From G6_RESERVATION b\n" +
+"      Where((b.CheckIn <= to_date('04-SEP-99','DD-MON-YY') and to_date('10-SEP-99','DD-MON-YY') <= b.Checkout )" +
+"         or (b.CheckIn <= to_date('04-SEP-99','DD-MON-YY') and to_date('04-SEP-99','DD-MON-YY') <= b.Checkout ) -- i begyndelsen\n" +
+"         or (b.CheckIn >= to_date('10-SEP-99','DD-MON-YY') and to_date('10-SEP-99','DD-MON-YY') >= b.Checkout ) --i slutningen\n" +
+"         or (b.CheckIn >= to_date('04-SEP-99','DD-MON-YY') and to_date('10-SEP-99','DD-MON-YY') >= b.Checkout ))) -- forespørgelse omkredser de reserverede       \n" +
+"         order by G6_Rooms.ROOMNO;";
         String SQLString2 = // get order details
                 "select resd.pno, resd.qty from tbl od where od.reservationID = ? "; // foreign key match 
         PreparedStatement statement = null;

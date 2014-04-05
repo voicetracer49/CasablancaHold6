@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package DataSource;
-
+import oracle.sql.DATE;
 import Domain.AvailableRooms;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,29 +30,23 @@ public class getRoomsMapper {
                 = "Select RoomID, ROOMNO, ROOMTYPE From G6_Rooms \n"
                 + "where RoomID not in \n"
                 + "(Select RoomID From G6_RESERVATION b \n"
-                + " Where((b.CheckIn <= to_date('04-SEP-99','DD-MON-YY') and to_date('10-SEP-99','DD-MON-YY') <= b.Checkout ) \n"
-                + " or (b.CheckIn <= to_date('04-SEP-99','DD-MON-YY') and to_date('04-SEP-99','DD-MON-YY') <= b.Checkout ) \n"
-                + " or (b.CheckIn >= to_date('10-SEP-99','DD-MON-YY') and to_date('10-SEP-99','DD-MON-YY') >= b.Checkout ) \n"
-                + " or (b.CheckIn >= to_date('04-SEP-99','DD-MON-YY') and to_date('10-SEP-99','DD-MON-YY') >= b.Checkout ))) \n"
-                + " order by G6_Rooms.ROOMNO; "
-                + "values (?,?,?,?,?)";
+                + " Where((b.CheckIn <= to_date('?','DD-MON-YY') and to_date('?','DD-MON-YY') <= b.Checkout )"
+                + " or (b.CheckIn <= to_date('?','DD-MON-YY') and to_date('?','DD-MON-YY') <= b.Checkout )"
+                + " or (b.CheckIn >= to_date('?','DD-MON-YY') and to_date('?','DD-MON-YY') >= b.Checkout )"
+                + " or (b.CheckIn >= to_date('?','DD-MON-YY') and to_date('?','DD-MON-YY') >= b.Checkout )))"
+                + " order by G6_Rooms.ROOMNO; ";
         PreparedStatement statement = null;
 
-        try {
-            //== get unique ono
+        try {      //== insert tuple
             statement = con.prepareStatement(SQLString1);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                o.setOno(rs.getInt(1));
-            }
-
-            //== insert tuple
-            statement = con.prepareStatement(SQLString2);
-            statement.setInt(1, o.getOno());
-            statement.setInt(2, o.getCustomerNo());
-            statement.setInt(3, o.getEmployeeNo());
-            statement.setString(4, o.getReceived());
-            statement.setString(5, o.getShipped());
+            statement.setDate(1, ar.getCheckIn());
+            statement.setDate(2, ar.getCheckIn());
+            statement.setDate(3, ar.getCheckIn());
+            statement.setDate(4, ar.getCheckIn());
+            statement.setDate(5, ar.getCheckOut());
+            statement.setDate(6, ar.getCheckOut());
+            statement.setDate(7, ar.getCheckIn());
+            statement.setDate(8, ar.getCheckOut());
             rowsInserted = statement.executeUpdate();
             con.commit();
         } catch (SQLException e) {
@@ -61,7 +55,7 @@ public class getRoomsMapper {
                 System.out.println("Fail in OrderMapper - saveNewOrder");
                 System.out.println(e.getMessage());
             } catch (SQLException ex) {
-                Logger.getLogger(OrderMapper.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ReservationMapper.class.getName()).log(Level.SEVERE, null, ex);
             }
         } finally // must close statement
         {
