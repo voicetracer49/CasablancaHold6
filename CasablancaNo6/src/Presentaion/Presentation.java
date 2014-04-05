@@ -9,7 +9,7 @@ package Presentaion;
 import Domain.AvailableRooms;
 import Domain.Controller;
 import java.sql.Date;
-import oracle.sql.DATE;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -240,10 +240,12 @@ public class Presentation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void UpdateAvailableListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAvailableListActionPerformed
-        
-        Date checkIn = (java.sql.Date) jDateChooser1.getDate();
-        Date checkOut = (java.sql.Date)jDateChooser2.getDate();
-        AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
+        String checkIn = "";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yy");
+        checkIn = sdf.format(jDateChooser1.getDate());
+        System.out.println(checkIn);
+//        Date checkOut = (java.sql.Date)jDateChooser2.getDate();
+//        AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
 
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 
