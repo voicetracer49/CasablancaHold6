@@ -154,6 +154,9 @@
   </Layout>
   <SubComponents>
     <Component class="com.toedter.components.JLocaleChooser" name="jLocaleChooser1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLocaleChooser1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="com.toedter.calendar.JMonthChooser" name="jMonthChooser1">
     </Component>

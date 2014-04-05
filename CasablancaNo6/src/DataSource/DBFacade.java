@@ -4,7 +4,7 @@ import java.sql.Connection;
 import domain.*;
 /**
  *
- * @author Anders Kjær
+ * @author Anders Kjær, Ruben Juul, Marcus Ulsø
  */
 // Encapsulates the Data Source Layer
 // Encapsulates connection handling 
@@ -15,6 +15,7 @@ public class DBFacade {
 
 	  private ReservationMapper rm; 
 	  private Connection con;
+          private getRoomsMapper arm;
 	  
 	  //== Singleton start
 	  private static DBFacade instance;
@@ -22,7 +23,7 @@ public class DBFacade {
 	  private DBFacade() {
 		  rm 	= new ReservationMapper(); // http://dadicy.wordpress.com/2007/10/29/what-do-you-mean-by-static-in-java/
 		  con 	= new DBConnector().getConnection();  // the connection will be released upon program 
-		  					     // termination by the garbage collector		  
+		  arm    = new getRoomsMapper();					     // termination by the garbage collector		  
 	  }
 	  public static DBFacade getInstance()
 	  {
@@ -42,11 +43,14 @@ public class DBFacade {
 	  { 
 	    return rm.saveNewReservation(o, con); // rm. er ReservationMapper 
 	  }
-	  
-	  public boolean saveNewReservationDetail(reservationDetail od)
-	  {
-	    return rm.saveNewReservationDetail(od, con);  // rm. er ReservationMapper
-	  }
+          public boolean getAvailableRooms(AvailableRooms ar)
+          {
+              return arm.getAvailableRooms(ar);
+          }	  
+//	  public boolean saveNewReservationDetail(reservationDetail od)
+//	  {
+//	    return rm.saveNewReservationDetail(od, con);  // rm. er ReservationMapper
+//	  }
 	
 }
 ////

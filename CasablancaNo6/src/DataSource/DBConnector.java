@@ -5,13 +5,13 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author Anders Kjær, Ruben Juul
+ * @author Anders Kjær, Ruben Juul, Marcus Ulsø
  */
 public class DBConnector
 {
 
-    private static String id = "cphrm69";
-    private static String pw = "cphrm69";
+    private static String id = "SEM2_TEST_GR06";
+    private static String pw = "SEM2_TEST_GR06";
 
     public Connection getConnection()
     {

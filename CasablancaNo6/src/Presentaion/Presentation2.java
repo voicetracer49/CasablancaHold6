@@ -53,6 +53,12 @@ public class Presentation2 extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 0, 0));
         setForeground(new java.awt.Color(255, 0, 0));
 
+        jLocaleChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLocaleChooser1ActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("First Name");
 
         jTextField1.setText("jTextField1");
@@ -199,6 +205,10 @@ public class Presentation2 extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jLocaleChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLocaleChooser1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLocaleChooser1ActionPerformed
 
     /**
      * @param args the command line arguments
