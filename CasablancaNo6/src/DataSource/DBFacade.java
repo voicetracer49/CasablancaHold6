@@ -46,7 +46,7 @@ public class DBFacade {
 //	  }
           public AvailableRooms getAvailableRooms(AvailableRooms ar)
           {
-              return arm.getAvailableRooms(ar);
+              return arm.getAvailableRooms(ar);             
           }	  
 
 	

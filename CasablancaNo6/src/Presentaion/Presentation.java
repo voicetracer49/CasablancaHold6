@@ -244,13 +244,17 @@ public class Presentation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void UpdateAvailableListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAvailableListActionPerformed
-        java.util.Date In = jDateChooser1.getDate();
+         java.util.Date In = jDateChooser1.getDate();
         java.util.Date out = jDateChooser2.getDate();
-        System.out.println(In);
+//        System.out.println(In);
         java.sql.Date checkIn = new java.sql.Date(In.getTime());
         java.sql.Date checkOut = new java.sql.Date(out.getTime());
-        System.out.println(checkIn);
+//        System.out.println(checkIn);
         AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
+//        ar.getaRooms();
+        {System.out.println("write from Gui" + ar.getaRooms());
+        }
+        //currentAvailableRooms
 
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 

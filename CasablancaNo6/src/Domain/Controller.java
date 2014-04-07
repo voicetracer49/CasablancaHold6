@@ -10,17 +10,20 @@ import java.sql.Date;
 
 public class Controller {
 
-    private AvailableRooms currentAvailableRooms;
+    public AvailableRooms currentAvailableRooms;
     private ActivityReservation newActivity;
     private Guests newGuest;
     private Reservation currentReservation;   // order in focus
     private DBFacade dbf;  //ref.Variabel til instans af DBFacade
     DBFacade facade = new DBFacade();
+    public int rono;
+    public String roty;
 
     public Controller() {
 
         currentReservation = null;
-        dbf = DBFacade.getInstance();  // afhængig af navngivning i DBFacade?   
+        dbf = DBFacade.getInstance();  // afhængig af navngivning i DBFacade? 
+        
     }
 
 //    public Reservation createNewReservation(int reservationID, int roomID, DATE checkIn, DATE checkOut, boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
@@ -43,10 +46,10 @@ public class Controller {
     public AvailableRooms getAvailableRooms(Date checkIn, Date checkOut) {
         currentAvailableRooms = new AvailableRooms(checkIn, checkOut);
         AvailableRooms status;
-        status = facade.getAvailableRooms(currentAvailableRooms);
+        status = facade.getAvailableRooms(currentAvailableRooms);  
         
-
-        return currentAvailableRooms;
+        return currentAvailableRooms;  
+// object med 3 atributter 2 Date + en arrayliste = int roomNo, String roomType
     }
 
 //    public Reservation getReservation(int reservationID) {

@@ -23,8 +23,6 @@ public class AvailableRooms {
         this.checkOut = checkOut;
     }
 
-    
-
     public Date getCheckIn() {
         return checkIn;
     }
@@ -32,4 +30,14 @@ public class AvailableRooms {
     public Date getCheckOut() {
         return checkOut;
     }
+    
+    public void setARooms(int roomNO, String roomType){
+        aRooms.add(roomNO);
+        aRooms.add(roomType);
+    }
+    public  Object getaRooms() {
+       return aRooms;
+    }
+    
 }
+
