@@ -6,7 +6,6 @@
 
 package Domain;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -14,22 +13,33 @@ import java.util.ArrayList;
  * @author Anders Kjær
  */
 public class AvailableRooms {
-    java.sql.Date checkIn;
-    java.sql.Date checkOut;
+    String checkIn;
+    String checkOut;
+//    java.sql.Date checkIn;
+//    java.sql.Date checkOut;
     ArrayList<Object> aRooms = new ArrayList();
 
-    public AvailableRooms(Date checkIn, Date checkOut) {
+    public AvailableRooms(String checkIn, String checkOut) {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
 
-    public Date getCheckIn() {
+    public String getCheckIn() {
         return checkIn;
     }
 
-    public Date getCheckOut() {
+    public String getCheckOut() {
         return checkOut;
     }
+    
+
+//    public Date getCheckIn() {
+//        return checkIn;
+//    }
+//
+//    public Date getCheckOut() {
+//        return checkOut;
+//    }
     
     public void setARooms(int roomNO, String roomType){
         aRooms.add(roomNO);

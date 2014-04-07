@@ -41,14 +41,14 @@ public class getRoomsMapper {
         try {      //== insert tuple
             
             statement = con.prepareStatement(SQLString1);
-            statement.setDate(1, ar.getCheckIn());
-            statement.setDate(2, ar.getCheckOut());
-            statement.setDate(3, ar.getCheckIn());
-            statement.setDate(4, ar.getCheckIn());
-            statement.setDate(5, ar.getCheckOut());
-            statement.setDate(6, ar.getCheckOut());
-            statement.setDate(7, ar.getCheckIn());
-            statement.setDate(8, ar.getCheckOut());
+            statement.setString(1, ar.getCheckIn());
+            statement.setString(2, ar.getCheckOut());
+            statement.setString(3, ar.getCheckIn());
+            statement.setString(4, ar.getCheckIn());
+            statement.setString(5, ar.getCheckOut());
+            statement.setString(6, ar.getCheckOut());
+            statement.setString(7, ar.getCheckIn());
+            statement.setString(8, ar.getCheckOut());
             ResultSet rs;
             rs = statement.executeQuery();
                 while (rs.next())

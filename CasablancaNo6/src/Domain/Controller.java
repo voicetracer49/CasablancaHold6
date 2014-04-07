@@ -43,7 +43,7 @@ public class Controller {
 
 
 
-    public AvailableRooms getAvailableRooms(Date checkIn, Date checkOut) {
+    public AvailableRooms getAvailableRooms(String checkIn, String checkOut) {
         currentAvailableRooms = new AvailableRooms(checkIn, checkOut);
         AvailableRooms status;
         status = facade.getAvailableRooms(currentAvailableRooms);  

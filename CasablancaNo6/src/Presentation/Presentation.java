@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Presentation;
 
 import Domain.AvailableRooms;
 import Domain.Controller;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 
 /**
@@ -18,13 +19,14 @@ import java.text.SimpleDateFormat;
 public class Presentation extends javax.swing.JFrame {
 
     private Controller c = new Controller();
+
     /**
      * Creates new form Presentation
      */
     public Presentation() {
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -236,26 +238,18 @@ public class Presentation extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        
-
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void UpdateAvailableListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAvailableListActionPerformed
-         java.util.Date In = jDateChooser1.getDate();
-        java.util.Date out = jDateChooser2.getDate();
-//        System.out.println(In);
-        java.sql.Date checkIn = new java.sql.Date(In.getTime());
-        java.sql.Date checkOut = new java.sql.Date(out.getTime());
-//        System.out.println(checkIn);
+        java.util.Date In = jDateChooser1.getDate();
+        java.util.Date Out = jDateChooser2.getDate();
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String checkIn = formatter.format(In);
+        String checkOut = formatter.format(Out);
         AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
-//        ar.getaRooms();
-        {System.out.println("write from Gui" + ar.getaRooms());
-        }
-        //currentAvailableRooms
-
+        System.out.println("write from Gui" + ar.getaRooms());
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 
     /**
