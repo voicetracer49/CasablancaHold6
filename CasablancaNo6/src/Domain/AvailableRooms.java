@@ -15,8 +15,6 @@ import java.util.ArrayList;
 public class AvailableRooms {
     String checkIn;
     String checkOut;
-//    java.sql.Date checkIn;
-//    java.sql.Date checkOut;
     ArrayList<Object> aRooms = new ArrayList();
 
     public AvailableRooms(String checkIn, String checkOut) {
@@ -32,15 +30,6 @@ public class AvailableRooms {
         return checkOut;
     }
     
-
-//    public Date getCheckIn() {
-//        return checkIn;
-//    }
-//
-//    public Date getCheckOut() {
-//        return checkOut;
-//    }
-    
     public void setARooms(int roomNO, String roomType){
         aRooms.add(roomNO);
         aRooms.add(roomType);
@@ -48,6 +37,13 @@ public class AvailableRooms {
     public  Object getaRooms() {
        return aRooms;
     }
-    
+    public Object getFromARooms(int i){
+        
+        return this.aRooms.get(i);
+    }
+    public int getSizeOfARooms(){
+        
+        return aRooms.size();
+    }
 }
 

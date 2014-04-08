@@ -6,7 +6,6 @@ package Domain;
  */
 
 import DataSource.DBFacade;
-import java.sql.Date;   //?
 
 public class Controller {
 
@@ -42,7 +41,7 @@ public class Controller {
     public Guests createNewGuest(String fName, String lName, String address, int phoneNo, String email, String country, int passportNo, String travelAgency, String pinCode, int activityBookingId) {       // int reservationId hentes og den medsendes i creatNewGuest her ovenfor??
 
         //== create Guests object with ReservationID=0
-        currentGuest = new Guests(0, String fName, String lName, String address, int phoneNo, String email, String country, int passportNo, String travelAgency, String pinCode, int activityBookingId);
+        currentGuest = new Guests(0, fName, lName, address, phoneNo, email, country, passportNo, travelAgency, pinCode, activityBookingId);
                 //== save and get DB-generated unique reservationID
             boolean status = dbf.saveNewGuest(currentGuest); // facade el. dbf .. ¤_¤??
         if (!status) //fail!

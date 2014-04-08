@@ -247,8 +247,11 @@ public class Presentation extends javax.swing.JFrame {
         String checkOut = formatter.format(jDateChooser2.getDate());
         AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
         DefaultListModel defaultModel = new DefaultListModel();
-        defaultModel.addElement(ar.getaRooms());
-        jList1.setModel(defaultModel);
+        for(int i = 0; i < ar.getSizeOfARooms(); i++){
+            defaultModel.addElement(ar.getFromARooms(i));
+            jList1.setModel(defaultModel);
+        }
+        
         
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 
