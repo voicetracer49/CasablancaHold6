@@ -1,3 +1,4 @@
+
 package DataSource;
 
 import Domain.AvailableRooms;
@@ -37,16 +38,13 @@ public class DBFacade {
 	  }
 	  //== Singleton end!
 
-	  
+	  ///////////////////////////////////////////////Reservations ///////////////////////////7
 //	  public Reservation getReservation(int reservationID) 
 //	  {
 //		  return rm.getReservation(reservationID, con);	   // rm. er ReservationMapper, con. er new connection 
 //	  }
 	  
-//	  public boolean saveNewReservation(Reservation o)
-//	  { 
-//	    return rm.saveNewReservation(o, con); // rm. er ReservationMapper 
-//	  }
+	 
         
           public AvailableRooms getAvailableRooms(AvailableRooms ar)
           {
@@ -58,6 +56,9 @@ public class DBFacade {
 	  {
 		  return gm.getGuests(guestsId, con);	      
 	  }
-	  
-}
-////
+          
+	   public boolean saveNewGuest(Guests g)
+	  { 
+	    return gm.saveNewGuest(g, con); // gm. er GuestMapper 
+	  }
+}         /////////////////////////////////////////////////Guests slut///

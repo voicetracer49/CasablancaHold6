@@ -65,52 +65,57 @@ private final Connection con;
         return g;
     }
 
-//    //== Insert new order (tuple)
-//    public boolean saveNewGuest(Guests res, Connection con)
-//    {
-//        int rowsInserted = 0;
-//        String SQLString1 =
-//                "select reservationseq.nextval from dual";
-//        String SQLString2 =
-//                "insert into G6_Guests values (?,?,?,?,?,?,?,?,?,?,? )";
+    //== Insert new order (tuple)
+    public boolean saveNewGuest(Guests g, Connection con)
+    {
+        int rowsInserted = 0;
+        String SQLString1 =
+                "select reservationseq.nextval from dual";
+        String SQLString2 =
+                "insert into G6_Guests values (?,?,?,?,?,?,?,?,?,?,? )";
 //        String SQLString3 =
-//                "insert into G6_GuestsReservation values (?,?)";
-//        
-//        PreparedStatement statement = null;
-//
-//        try
-//        {
-//            //== get unique ono
-//            statement = con.prepareStatement(SQLString1);
-//            ResultSet rs = statement.executeQuery();
-//            if (rs.next())
-//            {
-//                res.setOno(rs.getInt(1));
-//            }
-//
-//            //== insert tuple
-//            statement = con.prepareStatement(SQLString2);
-//            statement.setInt(1, res.getOno());
-//            statement.setInt(2, res.getCustomerNo());
-//            statement.setInt(3, res.getEmployeeNo());
-//            statement.setString(4, res.getReceived());
-//            statement.setString(5, res.getShipped());
-//            rowsInserted = statement.executeUpdate();
-//        } catch (Exception e)
-//        {
-//            System.out.println("Fail in OrderMapper - saveNewReservation");
-//            System.out.println(e.getMessage());
-//        } finally // must close statement
-//        {
-//            try
-//            {
-//                statement.close();
-//            } catch (SQLException e)
-//            {
-//                System.out.println("Fail in OrderMapper - saveNewreservation");
-//                System.out.println(e.getMessage());
-//            }
-//        }
-//        return rowsInserted == 1;
-//    }
+//                "insert into G6_GuestsReservation values (?,?)";  // afhængig af transaktions rekkefølge! oprette guest/reservation Først ?       
+        PreparedStatement statement = null;
+        try
+        {
+            //== get unique ono
+            statement = con.prepareStatement(SQLString1);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next())
+            {
+                g.setGuestId(rs.getInt(1));
+            }
+            //== insert tuple
+            statement = con.prepareStatement(SQLString2);
+            statement.setInt(1, g.getGuestId());
+            statement.setString(2, g.getfName());   //høj cobling -< tilgår Guest direkte ¤_¤??
+            statement.setString(3, g.getfName());
+            statement.setString(4, g.getAddress());
+            statement.setInt(5, g.getPhoneNo());
+            statement.setString(6, g.getEmail());
+            statement.setString(7, g.getCountry());
+            statement.setInt(8, g.getPassportNo());
+            statement.setString(9, g.getTravelAgency());
+            statement.setString(10, g.getPinCode());
+            statement.setInt(11, g.getActivityBookingId());
+            // class Guests -> sætter via controller SQLString2 Statement   
+            rowsInserted = statement.executeUpdate();  
+            
+        } catch (Exception e)
+        {
+            System.out.println("Fail in OrderMapper - saveNewReservation RJ");
+            System.out.println(e.getMessage());
+        } finally // must close statement
+        {
+            try
+            {
+                statement.close();
+            } catch (SQLException e)
+            {
+                System.out.println("Fail in OrderMapper - saveNewGuest RJ");
+                System.out.println(e.getMessage());
+            }
+        }
+        return rowsInserted == 1;
+    }
 }
