@@ -7,10 +7,9 @@ package Presentation;
 
 import Domain.AvailableRooms;
 import Domain.Controller;
-import java.sql.Date;
-import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -243,13 +242,14 @@ public class Presentation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void UpdateAvailableListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAvailableListActionPerformed
-        java.util.Date In = jDateChooser1.getDate();
-        java.util.Date Out = jDateChooser2.getDate();
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String checkIn = formatter.format(In);
-        String checkOut = formatter.format(Out); 
+        String checkIn = formatter.format(jDateChooser1.getDate());
+        String checkOut = formatter.format(jDateChooser2.getDate());
         AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
-        System.out.println("write from Gui" + ar.getaRooms());
+        DefaultListModel defaultModel = new DefaultListModel();
+        defaultModel.addElement(ar.getaRooms());
+        jList1.setModel(defaultModel);
+        
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 
     /**
