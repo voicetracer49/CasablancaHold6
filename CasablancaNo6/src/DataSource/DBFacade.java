@@ -1,6 +1,7 @@
 package DataSource;
 
 import Domain.AvailableRooms;
+import Domain.Guests;
 import Domain.Reservation;
 import java.sql.Connection;
 /**
@@ -17,6 +18,7 @@ public class DBFacade {
 	  private ReservationMapper rm; 
 	  private Connection con;
           private getRoomsMapper arm;
+          private GuestMapper gm;
 	  
 	  //== Singleton start
 	  private static DBFacade instance;
@@ -24,7 +26,8 @@ public class DBFacade {
 	  public DBFacade() {
 		  rm 	= new ReservationMapper(); // http://dadicy.wordpress.com/2007/10/29/what-do-you-mean-by-static-in-java/
 		  con 	= new DBConnector().getConnection();  // the connection will be released upon program 
-		  arm   = new getRoomsMapper(con);					     // termination by the garbage collector		  
+		  arm   = new getRoomsMapper(con);
+                  gm    = new GuestMapper(con);  // termination by the garbage collector		  
 	  }
 	  public static DBFacade getInstance()
 	  {
@@ -44,11 +47,17 @@ public class DBFacade {
 //	  { 
 //	    return rm.saveNewReservation(o, con); // rm. er ReservationMapper 
 //	  }
+        
           public AvailableRooms getAvailableRooms(AvailableRooms ar)
           {
               return arm.getAvailableRooms(ar);             
           }	  
-
-	
+         
+          /////////////////////////////////////////////////Guests/////////
+          public Guests getGuests(int guestsId) 
+	  {
+		  return gm.getGuests(guestsId, con);	      
+	  }
+	  
 }
 ////

@@ -247,7 +247,7 @@ public class Presentation extends javax.swing.JFrame {
         java.util.Date Out = jDateChooser2.getDate();
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         String checkIn = formatter.format(In);
-        String checkOut = formatter.format(Out);
+        String checkOut = formatter.format(Out); 
         AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
         System.out.println("write from Gui" + ar.getaRooms());
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
