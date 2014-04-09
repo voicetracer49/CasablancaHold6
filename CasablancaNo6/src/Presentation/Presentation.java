@@ -76,9 +76,15 @@ public class Presentation extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jList1);
 
-        jButton1.setText("Reservate room");
+        jButton1.setText("Reserve room");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setText("First Name");
 
@@ -110,7 +116,7 @@ public class Presentation extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Save Guest");
+        jButton3.setText("Save Guest ");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -246,14 +252,22 @@ public class Presentation extends javax.swing.JFrame {
         String checkIn = formatter.format(jDateChooser1.getDate());
         String checkOut = formatter.format(jDateChooser2.getDate());
         AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
-        DefaultListModel defaultModel = new DefaultListModel();
-        for(int i = 0; i < ar.getSizeOfARooms(); i++){
-            defaultModel.addElement(ar.getFromARooms(i));
+        DefaultListModel defaultModel = new DefaultListModel();        
+        for(int i = 0; i < ar.getSizeOfArrayList(); i++){
+            defaultModel.addElement(ar.readFromArrayList(i) + ", " + ar.readFromArrayList(i+1) + ", " + ar.readFromArrayList(i+2));
             jList1.setModel(defaultModel);
+            i= i+2;
         }
-        
-        
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        int index = jList1.getSelectedIndex();
+        String str = (String)(jList1.getModel().getElementAt(index));
+        String[] tokens = str.split(",");
+        String roomID = (tokens[0]);
+        c.createNewReservation(roomID);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
