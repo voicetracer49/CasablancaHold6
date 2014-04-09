@@ -15,6 +15,7 @@ import java.sql.ResultSet;
  */
 public class getRoomsMapper {
     private final Connection con;
+    private int roid;
     private int rono;
     private String roty;
     
@@ -28,7 +29,7 @@ public class getRoomsMapper {
         System.out.println(ar.getCheckIn());
         System.out.println(ar.getCheckOut());     
         String SQLString1
-                = "Select ROOMNO, ROOMTYPE From G6_Rooms "
+                = "Select ROOMID, ROOMNO, ROOMTYPE From G6_Rooms "
                 + " where RoomID not in "
                 + "(Select RoomID From G6_RESERVATION b "
                 + " Where((b.CheckIn <= to_date(?,'YYYY-MM-DD') and to_date(?,'YYYY-MM-DD') <= b.Checkout )"
@@ -53,9 +54,10 @@ public class getRoomsMapper {
             rs = statement.executeQuery();
                 while (rs.next())
                 {
-                rono =rs.getInt(1);
-                roty =rs.getString(2);
-               ar.setARooms(rono, roty);     
+                roid =rs.getInt(1);    
+                rono =rs.getInt(2);
+                roty =rs.getString(3);
+               ar.setARooms(roid, rono, roty);     
 //                    System.out.println(rono +" " +roty);  
                 }
             System.out.println("3");

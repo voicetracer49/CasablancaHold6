@@ -30,18 +30,17 @@ public class AvailableRooms {
         return checkOut;
     }
     
-    public void setARooms(int roomNO, String roomType){
+    public void setARooms(int roomID, int roomNO, String roomType){
+        aRooms.add(roomID);
         aRooms.add(roomNO);
         aRooms.add(roomType);
     }
-    public  Object getaRooms() {
-       return aRooms;
-    }
-    public Object getFromARooms(int i){
+    // til listknap i GUI 
+    public Object readFromArrayList(int i){
         
         return this.aRooms.get(i);
     }
-    public int getSizeOfARooms(){
+    public int getSizeOfArrayList(){
         
         return aRooms.size();
     }

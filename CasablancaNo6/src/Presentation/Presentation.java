@@ -261,12 +261,14 @@ public class Presentation extends javax.swing.JFrame {
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        boolean Confirmed = false; 
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         int index = jList1.getSelectedIndex();
         String str = (String)(jList1.getModel().getElementAt(index));
         String[] tokens = str.split(",");
-        String roomID = (tokens[0]);
-        c.createNewReservation(roomID, formatter.format(jDateChooser1.getDate()), formatter.format(jDateChooser2.getDate()));
+        int roomID = Integer.parseInt(tokens[0]);
+        
+        c.createNewReservation((roomID), formatter.format(jDateChooser1.getDate()), formatter.format(jDateChooser2.getDate()), Confirmed);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

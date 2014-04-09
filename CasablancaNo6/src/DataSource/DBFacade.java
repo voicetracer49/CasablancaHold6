@@ -25,7 +25,7 @@ public class DBFacade {
 	  private static DBFacade instance;
 	 
 	  public DBFacade() {
-		  rm 	= new ReservationMapper(); // http://dadicy.wordpress.com/2007/10/29/what-do-you-mean-by-static-in-java/
+		  rm 	= new ReservationMapper(con); // http://dadicy.wordpress.com/2007/10/29/what-do-you-mean-by-static-in-java/
 		  con 	= new DBConnector().getConnection();  // the connection will be released upon program 
 		  arm   = new getRoomsMapper(con);
                   gm    = new GuestMapper(con);  // termination by the garbage collector		  
@@ -39,11 +39,16 @@ public class DBFacade {
 	  //== Singleton end!
 
 	  ///////////////////////////////////////////////Reservations ///////////////////////////7
-//	  public Reservation getReservation(int reservationID) 
-//	  {
-//		  return rm.getReservation(reservationID, con);	   // rm. er ReservationMapper, con. er new connection 
-//	  }
+ public Reservation getReservation(int reservationID) 
+	  {
+		  return rm.getReservation(reservationID, con);	   // rm. er ReservationMapper, con. er new connection 
+	  }
 	  
+	  public boolean saveNewReservation(Reservation o)
+	  { 
+	    return rm.saveNewReservation(o, con); // rm. er ReservationMapper 
+	  }
+          ///////////////////////////////////////////////slut reservation ///////////////	  
 	 
         
           public AvailableRooms getAvailableRooms(AvailableRooms ar)
@@ -60,5 +65,19 @@ public class DBFacade {
 	   public boolean saveNewGuest(Guests g)
 	  { 
 	    return gm.saveNewGuest(g, con); // gm. er GuestMapper 
-	  }
-}         /////////////////////////////////////////////////Guests slut///
+	  }       
+}            /////////////////////////////////////////Guests slut///
+
+
+
+
+	  
+	 
+
+	  
+	 
+        
+        
+
+
+
