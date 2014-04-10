@@ -42,15 +42,15 @@ public class Presentation extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        fNameField = new javax.swing.JTextField();
+        lNameField = new javax.swing.JTextField();
+        addressField = new javax.swing.JTextField();
+        phoneNoField = new javax.swing.JTextField();
+        countryField = new javax.swing.JTextField();
+        eMailField = new javax.swing.JTextField();
+        passNoField = new javax.swing.JTextField();
+        travelAField = new javax.swing.JTextField();
+        pinCodeField = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -86,28 +86,28 @@ public class Presentation extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("First Name");
+        fNameField.setText("First Name");
 
-        jTextField2.setText("Last Name");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        lNameField.setText("Last Name");
+        lNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                lNameFieldActionPerformed(evt);
             }
         });
 
-        jTextField3.setText("Address");
+        addressField.setText("Address");
 
-        jTextField4.setText("Country");
+        phoneNoField.setText("Country");
 
-        jTextField5.setText("Phone Number");
+        countryField.setText("Phone Number");
 
-        jTextField6.setText("e mail");
+        eMailField.setText("e mail");
 
-        jTextField7.setText("Passport Number");
+        passNoField.setText("Passport Number");
 
-        jTextField8.setText("Travel Agency");
+        travelAField.setText("Travel Agency");
 
-        jTextField9.setText("Pin Code");
+        pinCodeField.setText("Pin Code");
 
         jButton2.setText("Save Reservation");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +117,11 @@ public class Presentation extends javax.swing.JFrame {
         });
 
         jButton3.setText("Save Guest ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -149,21 +154,21 @@ public class Presentation extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField9)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(pinCodeField)
+                            .addComponent(travelAField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passNoField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(eMailField, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+                            .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lNameField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fNameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                            .addComponent(jTextField4))
+                            .addComponent(countryField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(phoneNoField))
                         .addGap(76, 76, 76)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,7 +186,7 @@ public class Presentation extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(UpdateAvailableList)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(fNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,21 +200,21 @@ public class Presentation extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(phoneNoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(eMailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passNoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(travelAField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pinCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -238,9 +243,9 @@ public class Presentation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void lNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_lNameFieldActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
@@ -252,24 +257,51 @@ public class Presentation extends javax.swing.JFrame {
         String checkIn = formatter.format(jDateChooser1.getDate());
         String checkOut = formatter.format(jDateChooser2.getDate());
         AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
-        DefaultListModel defaultModel = new DefaultListModel();        
-        for(int i = 0; i < ar.getSizeOfArrayList(); i++){
-            defaultModel.addElement(ar.readFromArrayList(i) + ", " + ar.readFromArrayList(i+1) + ", " + ar.readFromArrayList(i+2));
+        DefaultListModel defaultModel = new DefaultListModel();
+        for (int i = 0; i < ar.getSizeOfArrayList(); i++) {
+            defaultModel.addElement(ar.readFromArrayList(i) + ", " + ar.readFromArrayList(i + 1) + ", " + ar.readFromArrayList(i + 2));
             jList1.setModel(defaultModel);
-            i= i+2;
+            i = i + 2;
         }
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        boolean Confirmed = false; 
+        boolean Confirmed = false;
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         int index = jList1.getSelectedIndex();
-        String str = (String)(jList1.getModel().getElementAt(index));
+        String str = (String) (jList1.getModel().getElementAt(index));
         String[] tokens = str.split(",");
         int roomID = Integer.parseInt(tokens[0]);
-        
+
         c.createNewReservation((roomID), formatter.format(jDateChooser1.getDate()), formatter.format(jDateChooser2.getDate()), Confirmed);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int activityBookingId = 0;
+        String fName = fNameField.getText();
+        String lName = lNameField.getText();
+        String address = addressField.getText();
+        int phoneNo = Integer.parseInt(phoneNoField.getText());
+        String country = countryField.getText();
+        String email = eMailField.getText();
+        int passportNo = Integer.parseInt(passNoField.getText());
+        String travelAgency = travelAField.getText();
+        String pinCode = pinCodeField.getText();
+//        int activityBookingId = activityBookingId;
+
+        c.createNewGuest(fName, lName, address, phoneNo, email, country, passportNo, travelAgency, pinCode, activityBookingId);
+//        if (lNameField.getText().isEmpty())
+////        {
+////            resultLabel2.setText("Missing name to the game");
+////        } else
+//        {
+
+//            con.addGame(newGame); 
+//            resultLabel2.setText("New game added");
+//            jComboBoxSelectGames.addItem(newGame);
+//        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,6 +342,10 @@ public class Presentation extends javax.swing.JFrame {
     private javax.swing.JLabel CheckInLabel;
     private javax.swing.JLabel CheckOutLabel;
     private javax.swing.JButton UpdateAvailableList;
+    private javax.swing.JTextField addressField;
+    private javax.swing.JTextField countryField;
+    private javax.swing.JTextField eMailField;
+    private javax.swing.JTextField fNameField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -320,14 +356,10 @@ public class Presentation extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField lNameField;
+    private javax.swing.JTextField passNoField;
+    private javax.swing.JTextField phoneNoField;
+    private javax.swing.JTextField pinCodeField;
+    private javax.swing.JTextField travelAField;
     // End of variables declaration//GEN-END:variables
 }

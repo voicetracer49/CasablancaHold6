@@ -1,10 +1,12 @@
 
 package DataSource;
 import Domain.Guests;
+import Domain.Relation;
+//import Domain.Reservation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author Ruben Juul
@@ -24,15 +26,15 @@ private final Connection con;
         Guests g = null;
         String SQLString1 = // get order
                 "select * "
-                + "from G6_Guests "
-                + "where GuestId = ?";
+                + "from G6_Guests ";
+//                + "where GuestId = ?";
     
         PreparedStatement statement = null;
 
         try {
             //=== get Guest
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, GuestId);     // primary key value  // kunne evt. laves om til :: Where lName starts with ?
+//            statement.setInt(1, GuestId);     // primary key value  // kunne evt. laves om til :: Where lName starts with ?
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {//=== get Guests details
                 g = new Guests(guestId,  //1  int guestId
@@ -51,14 +53,14 @@ private final Connection con;
                         */    
             }
         } catch (Exception e) {
-            System.out.println("Fail in OrderMapper - getOrder");
+            System.out.println("Fail in  Mapper - getGuestList");
             System.out.println(e.getMessage());
         } finally // must close statement
         {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.out.println("Fail in OrderMapper - getOrder");
+                System.out.println("Fail in Mapper -  getGuestList");
                 System.out.println(e.getMessage());
             }
         }
@@ -68,13 +70,15 @@ private final Connection con;
     //== Insert new order (tuple)
     public boolean saveNewGuest(Guests g, Connection con)
     {
+        
         int rowsInserted = 0;
         String SQLString1 =
-                "select reservationseq.nextval from dual";
+                "select G6_GUE_SEQ.NEXTVAL from DUAL";
         String SQLString2 =
                 "insert into G6_Guests values (?,?,?,?,?,?,?,?,?,?,? )";
+      
 //        String SQLString3 =
-//                "insert into G6_GuestsReservation values (?,?)";  // afhængig af transaktions rekkefølge! oprette guest/reservation Først ?       
+//                "insert into G6_GuestsReservation values (?,?)";  //guest/reservation relation ?       
         PreparedStatement statement = null;
         try
         {
@@ -101,9 +105,20 @@ private final Connection con;
             // class Guests -> sætter via controller SQLString2 Statement   
             rowsInserted = statement.executeUpdate();  
             
+            
+//            statement = con.prepareStatement(SQLString3);
+////            Reservation re; 
+//            
+//            statement.setInt(1, g.getGuestId());
+//            statement.setInt(2, re.getReservationID());
+//            rowsInserted = statement.executeUpdate();
+            System.out.println(rowsInserted + " row Inserted in G6_Guest ");
+//            
+           
+            
         } catch (Exception e)
         {
-            System.out.println("Fail in OrderMapper - saveNewReservation RJ");
+            System.out.println("Fail in GuestMapper - saveNewGuest");
             System.out.println(e.getMessage());
         } finally // must close statement
         {
@@ -112,10 +127,48 @@ private final Connection con;
                 statement.close();
             } catch (SQLException e)
             {
-                System.out.println("Fail in OrderMapper - saveNewGuest RJ");
+                System.out.println("Fail in GuestMapper - saveNewGuest");
                 System.out.println(e.getMessage());
             }
         }
         return rowsInserted == 1;
     }
+    
+    public Relation saveRelation(int guestId, int ReservationId, Connection con){
+        
+        Relation rel = null;
+        String SQLString1 = // get order
+                "select * "
+                + "from G6_Guests ";
+//                + "where GuestId = ?";
+    
+        PreparedStatement statement = null;
+
+        try {
+            //=== get Guest
+            statement = con.prepareStatement(SQLString1);
+//            statement.setInt(1, GuestId);     // primary key value  // kunne evt. laves om til :: Where lName starts with ?
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {//=== get Guests details
+                   
+            }
+        } catch (Exception e) {
+            System.out.println("Fail in  GuestMapper - save Relation");
+            System.out.println(e.getMessage());
+        } finally // must close statement
+        {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Fail in Mapper -   save Relation");
+                System.out.println(e.getMessage());
+            }
+        }
+        return rel;
+    }
+    
+    
+    
+    
 }
+

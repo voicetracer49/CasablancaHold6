@@ -61,9 +61,13 @@ private final Connection con;
         //== Insert new order (tuple)
     public boolean saveNewReservation(Reservation r, Connection con)
     {
+        
         int rowsInserted = 0;
+//        boolean SQLValidate =
+//                "";
+//        if()
         String SQLString1 =
-                "select G6_RES_SEQ.NEXTVAL from DUAL";
+                "select G6_RES_SEQ.nextval from dual";
 //        INSERT INTO suppliers
 //        (supplier_id, supplier_name)
 //        VALUES
@@ -91,6 +95,7 @@ private final Connection con;
             statement.setString(3, r.getCheckIn());
             statement.setString(4, r.getCheckOut());
             statement.setBoolean(5, r.isConfirmed());
+            rowsInserted = statement.executeUpdate();
         } catch (Exception e)
         {
             System.out.println("Fail");
