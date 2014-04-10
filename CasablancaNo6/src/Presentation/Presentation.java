@@ -7,6 +7,7 @@ package Presentation;
 
 import Domain.AvailableRooms;
 import Domain.Controller;
+import Domain.ListOfGuests;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import javax.swing.DefaultListModel;
@@ -128,6 +129,11 @@ public class Presentation extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jList2);
 
         jToggleButton1.setText("Show all guests");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -310,6 +316,25 @@ public class Presentation extends javax.swing.JFrame {
 //        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        ListOfGuests log = c.getListOfGuests();
+        DefaultListModel defaultModel = new DefaultListModel();
+        for (int i = 0; i < log.getSizeOfArrayList(); i++) {
+            defaultModel.addElement(log.readFromArrayList(i) + ", " + log.readFromArrayList(i + 1) +
+                    ", " + log.readFromArrayList(i + 2) + ", " + log.readFromArrayList(i + 3) + ", " + 
+                    log.readFromArrayList(i + 4) + ", " + log.readFromArrayList(i + 5) + ", " + 
+                    log.readFromArrayList(i + 6) + ", " + log.readFromArrayList(i + 7) + ", " + 
+                    log.readFromArrayList(i + 8) + ", " + log.readFromArrayList(i + 9) + ", " + 
+                    log.readFromArrayList(i + 10));
+            jList1.setModel(defaultModel);
+            i = i + 10;
+        }
+        
+
+
+
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments

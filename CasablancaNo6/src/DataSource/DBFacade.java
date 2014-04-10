@@ -3,6 +3,7 @@ package DataSource;
 
 import Domain.AvailableRooms;
 import Domain.Guests;
+import Domain.ListOfGuests;
 import Domain.Reservation;
 import java.sql.Connection;
 /**
@@ -57,9 +58,12 @@ public class DBFacade {
           }	  
          
           /////////////////////////////////////////////////Guests/////////
-          public Guests getGuests(int guestsId) 
+          
+         
+        
+          public ListOfGuests getListOfGuests(ListOfGuests gList)
 	  {
-		  return gm.getGuests(guestsId, con);	      
+		  return gm.getListOfGuests(gList, con);	      
 	  }
           
 	   public boolean saveNewGuest(Guests g)

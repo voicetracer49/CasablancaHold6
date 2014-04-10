@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-
+import Domain.Relation;
 public class ReservationMapper
 {
 //=== Maps between objects and tables
@@ -63,19 +63,19 @@ private final Connection con;
     {
         
         int rowsInserted = 0;
-//        boolean SQLValidate =
-//                "";
-//        if()
+        String SQLString0 ="";
+        
         String SQLString1 =
-                "select G6_RES_SEQ.nextval from dual";
+                "select G6_RES_SEQ.NEXTVAL from DUAL";
 //        INSERT INTO suppliers
 //        (supplier_id, supplier_name)
 //        VALUES
 //        (G6_res_seq.NEXTVAL, 'Kraft Foods');
-//    ---old    select reservationseq.nextval from dual
+//    ---old    select G6_GUE_SEQ.NEXTVAL from DUAL
         
         String SQLString2 =
-                "insert into G6_Reservation values (?,?,?,?,?)";
+                "insert into G6_Reservation values (?,?,?,?,?)"
+               ;
         PreparedStatement statement = null;
 
         try
@@ -86,8 +86,9 @@ private final Connection con;
             if (rs.next())
             {
                 r.setReservationID(rs.getInt(1));
+                
             }
-
+            System.out.println();
             //== insert tuple
             statement = con.prepareStatement(SQLString2);
             statement.setInt(1, r.getReservationID());
@@ -112,7 +113,7 @@ private final Connection con;
             }
         }
         
-        System.out.println("false reservertion" + rowsInserted);
+        System.out.println(rowsInserted + " row Inserted! :-) ");
         return rowsInserted == 1;
         
     }

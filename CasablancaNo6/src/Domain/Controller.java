@@ -9,6 +9,7 @@ import DataSource.DBFacade;
 
 public class Controller {
 
+    private Relation re = new Relation();
     public AvailableRooms currentAvailableRooms;
     private ActivityReservation newActivity;
     private Guests currentGuest;
@@ -59,10 +60,10 @@ public class Controller {
 
 // --------getGuests(int guestId)!
     
-    public Guests getGuestsId(int guestId, Guests g){
-               
-        return g; // returnerer guest fra GuestMapper via DBFacade   
-            } 
+//    public Guests getGuestsId(int guestId, Guests g){
+//               
+//        return g; // returnerer guest fra GuestMapper via DBFacade   
+//            } 
     
     
     public AvailableRooms getAvailableRooms(String checkIn, String checkOut) {
@@ -78,4 +79,9 @@ public class Controller {
         return newActivity;
     }
 
+    public ListOfGuests getListOfGuests(){
+        ListOfGuests currentGuestList = new ListOfGuests();
+        facade.getListOfGuests(currentGuestList);
+        return currentGuestList;
+    }
 }
