@@ -4,30 +4,32 @@
  * and open the template in the editor.
  */
 package DataSource;
+
 import Domain.AvailableRooms;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Anders Kjær
  */
 public class getRoomsMapper {
+
     private final Connection con;
     private int roid;
     private int rono;
     private String roty;
-    
+
     public getRoomsMapper(Connection con) {
         this.con = con;
-            
+
     }
 
-   
     public AvailableRooms getAvailableRooms(AvailableRooms ar) {
         System.out.println(ar.getCheckIn());
-        System.out.println(ar.getCheckOut());     
+        System.out.println(ar.getCheckOut());
         String SQLString1
                 = "Select ROOMID, ROOMNO, ROOMTYPE From G6_Rooms "
                 + " where RoomID not in "
@@ -40,7 +42,7 @@ public class getRoomsMapper {
         PreparedStatement statement = null;
 
         try {      //== insert tuple
-            
+
             statement = con.prepareStatement(SQLString1);
             statement.setString(1, ar.getCheckIn());
             statement.setString(2, ar.getCheckOut());
@@ -52,36 +54,34 @@ public class getRoomsMapper {
             statement.setString(8, ar.getCheckOut());
             ResultSet rs;
             rs = statement.executeQuery();
-                while (rs.next())
-                {
-                roid =rs.getInt(1);    
-                rono =rs.getInt(2);
-                roty =rs.getString(3);
-               ar.setARooms(roid, rono, roty);     
+            while (rs.next()) {
+                roid = rs.getInt(1);
+                rono = rs.getInt(2);
+                roty = rs.getString(3);
+                ar.setARooms(roid, rono, roty);
 //                    System.out.println(rono +" " +roty);  
-                }
+            }
             System.out.println("3");
 
-            
         } catch (SQLException e) {
-            
-                System.out.println("Fail in getRoomsMapper - getAvailableRooms");
-                System.out.println(e.getMessage());
-            
+
+            System.out.println("Fail in getRoomsMapper - getAvailableRooms");
+            System.out.println(e.getMessage());
+
         } finally // must close statement
         {
             try {
-                if(statement != null){
+                if (statement != null) {
                     statement.close();
                 }
-                
-             } catch (SQLException e) {
+
+            } catch (SQLException e) {
                 System.out.println("Fail in  xxx getRoomsMapper - getAvailableRooms");
                 System.out.println(e.getMessage());
             }
-            
+
         }
         return ar; // ?  
-    
+
     }
 }

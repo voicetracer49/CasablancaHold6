@@ -37,7 +37,8 @@ private final Connection con;
 //            statement.setInt(1, GuestId);     // primary key value  // kunne evt. laves om til :: Where lName starts with ?
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {//=== get Guests details
-                g = new Guests(guestId,  //1  int guestId
+                g = new Guests(
+                        rs.getInt(1),  //1  int guestId
                         rs.getString(2), //2  String fName;
                         rs.getString(3), //3  String lName;
                         rs.getString(4), //4  String address;
