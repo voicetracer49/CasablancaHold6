@@ -27,12 +27,14 @@ private final Connection con;
 //        ListOfGuests gList = null;
         String SQLString1 = // get order
                 "select * "
-                + "from G6_Guests ";
+                + "from G6_Guests"
+                + " order by lName ";
 //                + "where GuestId = ?";
     
         PreparedStatement statement = null;
-      
-        try {      //== insert tuple
+//      statement = con.prepareStatement(SQLString1);
+        try {
+            statement = con.prepareStatement(SQLString1);
             ResultSet rs;
             rs = statement.executeQuery();
                 while (rs.next())
@@ -49,20 +51,21 @@ private final Connection con;
                 String pinCode = rs.getString(10);
                 int activityBookingId = rs.getInt(11);
               
-                        gList.setListOfGuests(guestId, fName, lName, address, phoneNo, email, country, passportNo, travelAgency, pinCode, activityBookingId);     
+    gList.setListOfGuests(guestId, fName, lName, address, phoneNo, email, country, passportNo, travelAgency, pinCode, activityBookingId);     
 //                    System.out.println(rono +" " +roty);  
                 }
-            System.out.println("3");
+            System.out.println("select * "+"from G6_Guests"+" order by lName");
 
             
         } catch (Exception e) {
             System.out.println("Fail in  Mapper - getGuestList");
             System.out.println(e.getMessage());
         } finally // must close statement
-        {
+                {
             try {
                 statement.close();
-            } catch (SQLException e) {
+            } 
+            catch (SQLException e) {
                 System.out.println("Fail in Mapper -  getGuestList");
                 System.out.println(e.getMessage());
             }
@@ -96,7 +99,7 @@ private final Connection con;
             statement = con.prepareStatement(SQLString2);
             statement.setInt(1, g.getGuestId());
             statement.setString(2, g.getfName());   //høj cobling -< tilgår Guest direkte ¤_¤??
-            statement.setString(3, g.getfName());
+            statement.setString(3, g.getlName());
             statement.setString(4, g.getAddress());
             statement.setInt(5, g.getPhoneNo());
             statement.setString(6, g.getEmail());
@@ -107,18 +110,8 @@ private final Connection con;
             statement.setInt(11, g.getActivityBookingId());
             // class Guests -> sætter via controller SQLString2 Statement   
             rowsInserted = statement.executeUpdate();  
-            
-            
-//            statement = con.prepareStatement(SQLString3);
-////            Reservation re; 
-//            
-//            statement.setInt(1, g.getGuestId());
-//            statement.setInt(2, re.getReservationID());
-//            rowsInserted = statement.executeUpdate();
-            System.out.println(rowsInserted + " row Inserted in G6_Guest ");
-//            
-           
-            
+        System.out.println(rowsInserted + " row Inserted in G6_Guest ");
+     
         } catch (Exception e)
         {
             System.out.println("Fail in GuestMapper - saveNewGuest");

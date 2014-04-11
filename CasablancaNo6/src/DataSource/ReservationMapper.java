@@ -37,7 +37,8 @@ private final Connection con;
             ResultSet rs = statement.executeQuery();
             if (rs.next())
                 {//=== get Reservation details
-                r = new Reservation(reservationID,  //1  int reservationId
+                r = new Reservation(reservationID,
+                        rs.getInt(1),                             //1  int reservationId
                         rs.getInt(2),               //2  int roomID;
                         rs.getString(3),              //3 DATE checkIn
                         rs.getString(4),             //4 DATE checkOut
@@ -63,33 +64,30 @@ private final Connection con;
     {
         
         int rowsInserted = 0;
-        String SQLString0 ="";
+//        String SQLString0 ="    "; // lock funktion!
         
         String SQLString1 =
                 "select G6_RES_SEQ.NEXTVAL from DUAL";
-//        INSERT INTO suppliers
-//        (supplier_id, supplier_name)
-//        VALUES
-//        (G6_res_seq.NEXTVAL, 'Kraft Foods');
-//    ---old    select G6_GUE_SEQ.NEXTVAL from DUAL
         
         String SQLString2 =
-                "insert into G6_Reservation values (?,?,?,?,?)"
+                "insert into G6_Reservation values (?,?,?,?,?)";
+        
+        String SQLString3 =
+                "insert into G6_GuestsReservation values (?,?)" //  Asociations tabel At linke Guest med reservation!
                ;
         PreparedStatement statement = null;
 
         try
         {
-            //== get unique ono
+            //== get unique ReservationId: r.getReservationID()
             statement = con.prepareStatement(SQLString1);
             ResultSet rs = statement.executeQuery();
             if (rs.next())
             {
                 r.setReservationID(rs.getInt(1));
-                
             }
-            System.out.println();
-            //== insert tuple
+           
+            //== insert tuple into G6_Reservation
             statement = con.prepareStatement(SQLString2);
             statement.setInt(1, r.getReservationID());
             statement.setInt(2, r.getRoomID());
@@ -97,6 +95,13 @@ private final Connection con;
             statement.setString(4, r.getCheckOut());
             statement.setBoolean(5, r.isConfirmed());
             rowsInserted = statement.executeUpdate();
+            
+            //== insert tuple insert into G6_GuestReservation
+            statement = con.prepareStatement(SQLString3);
+            statement.setInt(1, r.getGuestIdToReservation());
+            statement.setInt(2, r.getReservationID());
+            rowsInserted = statement.executeUpdate();
+         
         } catch (Exception e)
         {
             System.out.println("Fail");
@@ -113,7 +118,7 @@ private final Connection con;
             }
         }
         
-        System.out.println(rowsInserted + " row Inserted! :-) ");
+        System.out.println("G6_RES_SEQ Inserted into G6_Reservation + " + rowsInserted + " Row into G6_GuestReservation :-) ");
         return rowsInserted == 1;
         
     }

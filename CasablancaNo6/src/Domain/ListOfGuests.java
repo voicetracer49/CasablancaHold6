@@ -17,19 +17,20 @@ public class ListOfGuests {
 
     public ListOfGuests() { //Konstruktor
     }
-    public void setListOfGuests(int guestId, String fName, String lName, String address, int phoneNo, String email, String country, int passportNo, String travelAgency, String pinCode, int activityBookingId){
+    public void setListOfGuests(int guestId, String fName, String lName, 
+            String address, int phoneNo, String email, String country, 
+            int passportNo, String travelAgency, String pinCode, int activityBookingId){
         this.listOfGuests.add(guestId);
         this.listOfGuests.add(fName);
         this.listOfGuests.add(lName);
-        this.listOfGuests.add(guestId);
-        this.listOfGuests.add(fName);
-        this.listOfGuests.add(lName);
-        this.listOfGuests.add(guestId);
-        this.listOfGuests.add(fName);
-        this.listOfGuests.add(lName);
-        this.listOfGuests.add(guestId);
-        this.listOfGuests.add(fName);
-        this.listOfGuests.add(lName);
+        this.listOfGuests.add(address);
+        this.listOfGuests.add(phoneNo);
+        this.listOfGuests.add(email);
+        this.listOfGuests.add(country);
+        this.listOfGuests.add(passportNo);
+        this.listOfGuests.add(travelAgency);
+        this.listOfGuests.add(pinCode);
+        this.listOfGuests.add(activityBookingId);
         
         
     }
@@ -42,4 +43,13 @@ public class ListOfGuests {
         
         return this.listOfGuests.size();
     }
+    ////////////////////////////////////at vælge på guestlisten til RelationsTabel////////
+    public int SelectFromListOfGuest(int guestIdToRelation){
+            
+    return guestIdToRelation;
+    }
+
+  
+
+    
 }

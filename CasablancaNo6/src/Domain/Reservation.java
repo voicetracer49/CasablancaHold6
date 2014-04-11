@@ -7,19 +7,27 @@ package Domain;
 public class Reservation {
 
     // ATRIBUTTER tblRecervation 
+    private int guestIdToRelation;
     private int reservationID; // NUMBER// PRIMARY KEY (reservationID)                                                   
     private int roomID; // FOREIGN KEY (roomTypeID) References tblRoomType
     private String checkIn; // DATE//
     private String checkOut; // DATE                  
     private boolean confirmed; // Char(1) 
 
-    public Reservation(int reservationID, int roomID, String checkIn, String checkOut, boolean confirmed) {
+    public Reservation(int reservationID, int guestIdToRelation, int roomID, String checkIn, String checkOut, boolean confirmed) {
         this.reservationID = reservationID;
+        this.guestIdToRelation = guestIdToRelation;        
         this.roomID = roomID;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.confirmed = confirmed;
     }
+
+    public int getGuestIdToReservation() {
+        return guestIdToRelation;
+    }
+
+    
 
     public int getReservationID() {
         return reservationID;

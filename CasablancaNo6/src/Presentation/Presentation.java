@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Presentation;
-
 import Domain.AvailableRooms;
 import Domain.Controller;
 import Domain.ListOfGuests;
@@ -65,18 +64,13 @@ public class Presentation extends javax.swing.JFrame {
 
         CheckOutLabel.setText("Check Out Date");
 
-        UpdateAvailableList.setText("Update Available Rooms");
+        UpdateAvailableList.setText("Available Rooms");
         UpdateAvailableList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateAvailableListActionPerformed(evt);
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jList1);
 
@@ -88,6 +82,11 @@ public class Presentation extends javax.swing.JFrame {
         });
 
         fNameField.setText("First Name");
+        fNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fNameFieldActionPerformed(evt);
+            }
+        });
 
         lNameField.setText("Last Name");
         lNameField.addActionListener(new java.awt.event.ActionListener() {
@@ -98,13 +97,28 @@ public class Presentation extends javax.swing.JFrame {
 
         addressField.setText("Address");
 
-        phoneNoField.setText("Country");
+        phoneNoField.setText("Phone Number");
+        phoneNoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneNoFieldActionPerformed(evt);
+            }
+        });
 
-        countryField.setText("Phone Number");
+        countryField.setText("Country");
+        countryField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countryFieldActionPerformed(evt);
+            }
+        });
 
         eMailField.setText("e mail");
 
         passNoField.setText("Passport Number");
+        passNoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passNoFieldActionPerformed(evt);
+            }
+        });
 
         travelAField.setText("Travel Agency");
 
@@ -121,11 +135,6 @@ public class Presentation extends javax.swing.JFrame {
 
         jDateChooser2.setDateFormatString("DD-MOM-YY");
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(jList2);
 
         jToggleButton1.setText("Show all guests");
@@ -140,61 +149,53 @@ public class Presentation extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CheckOutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CheckInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(UpdateAvailableList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(UpdateAvailableList)
+                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(fNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(pinCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(passNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(travelAField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(phoneNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(eMailField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(CheckOutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(CheckInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(95, 95, 95)
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(fNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(pinCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(passNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(travelAField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(phoneNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(eMailField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(CheckInLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -229,17 +230,19 @@ public class Presentation extends javax.swing.JFrame {
                                     .addComponent(UpdateAvailableList))))
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jToggleButton1))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1)))))))
-                .addContainerGap(163, Short.MAX_VALUE))
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jToggleButton1)
+                                    .addComponent(jButton1)))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(CheckInLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,7 +259,7 @@ public class Presentation extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(19, 19, 19))
+                .addContainerGap())
         );
 
         pack();
@@ -282,12 +285,19 @@ public class Presentation extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean Confirmed = false;
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        int index = jList1.getSelectedIndex();
-        String str = (String) (jList1.getModel().getElementAt(index));
-        String[] tokens = str.split(",");
-        int roomID = Integer.parseInt(tokens[0]);
+        int roomIndex = jList1.getSelectedIndex();
+        int guestIndex = jList2.getSelectedIndex();
+        
+        String str1 = (String) (jList1.getModel().getElementAt(roomIndex));
+        String[] tokens1 = str1.split(",");
+        int roomID = Integer.parseInt(tokens1[0]);
 
-        c.createNewReservation((roomID), formatter.format(jDateChooser1.getDate()), formatter.format(jDateChooser2.getDate()), Confirmed);
+        String str2 = (String) (jList2.getModel().getElementAt(guestIndex));
+        String[] tokens2 = str2.split(",");
+        int guestIdToRelation = Integer.parseInt(tokens2[0]);
+        
+        
+        c.createNewReservation((guestIdToRelation),(roomID), formatter.format(jDateChooser1.getDate()), formatter.format(jDateChooser2.getDate()), Confirmed);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -304,37 +314,52 @@ public class Presentation extends javax.swing.JFrame {
 //        int activityBookingId = activityBookingId;
 
         c.createNewGuest(fName, lName, address, phoneNo, email, country, passportNo, travelAgency, pinCode, activityBookingId);
-//        if (lNameField.getText().isEmpty())
-////        {
-////            resultLabel2.setText("Missing name to the game");
-////        } else
-//        {
-
-//            con.addGame(newGame); 
-//            resultLabel2.setText("New game added");
-//            jComboBoxSelectGames.addItem(newGame);
-//        }
-        // TODO add your handling code here:
+        ListOfGuests log = c.getListOfGuests();
+        DefaultListModel defaultModel = new DefaultListModel();
+        for (int i = 0; i < log.getSizeOfArrayList(); i++) {
+            defaultModel.addElement(log.readFromArrayList(i) + ", " + log.readFromArrayList(i + 1)
+                    + ", " + log.readFromArrayList(i + 2) + ", " + log.readFromArrayList(i + 3) + ", "
+                    + log.readFromArrayList(i + 4) + ", " + log.readFromArrayList(i + 5) + ", "
+                    + log.readFromArrayList(i + 6) + ", " + log.readFromArrayList(i + 7) + ", "
+                    + log.readFromArrayList(i + 8) + ", " + log.readFromArrayList(i + 9) + ", "
+                    + log.readFromArrayList(i + 10));
+            jList2.setModel(defaultModel);
+            i = i + 10;
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         ListOfGuests log = c.getListOfGuests();
         DefaultListModel defaultModel = new DefaultListModel();
         for (int i = 0; i < log.getSizeOfArrayList(); i++) {
-            defaultModel.addElement(log.readFromArrayList(i) + ", " + log.readFromArrayList(i + 1) +
-                    ", " + log.readFromArrayList(i + 2) + ", " + log.readFromArrayList(i + 3) + ", " + 
-                    log.readFromArrayList(i + 4) + ", " + log.readFromArrayList(i + 5) + ", " + 
-                    log.readFromArrayList(i + 6) + ", " + log.readFromArrayList(i + 7) + ", " + 
-                    log.readFromArrayList(i + 8) + ", " + log.readFromArrayList(i + 9) + ", " + 
-                    log.readFromArrayList(i + 10));
-            jList1.setModel(defaultModel);
+            defaultModel.addElement(log.readFromArrayList(i) + ", " + log.readFromArrayList(i + 1)
+                    + ", " + log.readFromArrayList(i + 2) + ", " + log.readFromArrayList(i + 3) + ", "
+                    + log.readFromArrayList(i + 4) + ", " + log.readFromArrayList(i + 5) + ", "
+                    + log.readFromArrayList(i + 6) + ", " + log.readFromArrayList(i + 7) + ", "
+                    + log.readFromArrayList(i + 8) + ", " + log.readFromArrayList(i + 9) + ", "
+                    + log.readFromArrayList(i + 10));
+            jList2.setModel(defaultModel);
             i = i + 10;
         }
-        
-
 
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void countryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countryFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_countryFieldActionPerformed
+
+    private void fNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fNameFieldActionPerformed
+
+    private void phoneNoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneNoFieldActionPerformed
+
+    private void passNoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passNoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passNoFieldActionPerformed
 
     /**
      * @param args the command line arguments

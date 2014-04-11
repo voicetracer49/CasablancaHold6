@@ -24,11 +24,11 @@ public class Controller {
     }
     
     //--------create new Reservation!
-    public Reservation createNewReservation( int roomID, String checkIn, String checkOut, boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
+    public Reservation createNewReservation(int guestIdToRelation, int roomID, String checkIn, String checkOut, boolean Confirmed) // skal sættes fra reservationDetailClassen ! 
     // int reservationId hentes og den medsendes i NewReservation her ovenfor?? 
     {
         //== create order object with ReservationID=0
-        currentReservation = new Reservation(0, roomID, checkIn, checkOut, Confirmed);
+        currentReservation = new Reservation(0, guestIdToRelation, roomID, checkIn, checkOut, Confirmed);
         //== save and get DB-generated unique reservationID
         boolean status = dbf.saveNewReservation(currentReservation);
         if (!status) //fail!
