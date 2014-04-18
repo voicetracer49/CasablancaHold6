@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package Presentation;
+
 import Domain.AvailableRooms;
 import Domain.Controller;
 import Domain.ListOfGuests;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 
 /**
@@ -57,6 +60,7 @@ public class Presentation extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +148,8 @@ public class Presentation extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -165,32 +171,35 @@ public class Presentation extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(fNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(pinCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(passNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(travelAField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(phoneNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(eMailField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(90, 90, 90))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(fNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(pinCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(passNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(travelAField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(phoneNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(eMailField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(countryField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,22 +236,24 @@ public class Presentation extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton3)
                                     .addComponent(pinCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(UpdateAvailableList))))
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jToggleButton1)
-                                    .addComponent(jButton1)))
-                            .addComponent(jScrollPane1)))
+                                    .addComponent(UpdateAvailableList)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(CheckInLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jToggleButton1)
+                            .addComponent(jButton1)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -270,61 +281,85 @@ public class Presentation extends javax.swing.JFrame {
     }//GEN-LAST:event_lNameFieldActionPerformed
 
     private void UpdateAvailableListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAvailableListActionPerformed
-        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String checkIn = formatter.format(jDateChooser1.getDate());
-        String checkOut = formatter.format(jDateChooser2.getDate());
-        AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
-        DefaultListModel defaultModel = new DefaultListModel();
-        for (int i = 0; i < ar.getSizeOfArrayList(); i++) {
-            defaultModel.addElement(ar.readFromArrayList(i) + ", " + ar.readFromArrayList(i + 1) + ", " + ar.readFromArrayList(i + 2));
-            jList1.setModel(defaultModel);
-            i = i + 2;
+
+        try {
+            Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar cal  = Calendar.getInstance();           
+            String expDateString = formatter.format(cal.getTime());
+            Date today = new Date(expDateString);
+            
+            if (jDateChooser1.getDate().before(jDateChooser2.getDate()) && (jDateChooser1.getDate().after(today) || jDateChooser1.getDate().equals(today))) {
+                String checkIn = formatter.format(jDateChooser1.getDate());
+                String checkOut = formatter.format(jDateChooser2.getDate());
+                AvailableRooms ar = c.getAvailableRooms(checkIn, checkOut);
+                DefaultListModel defaultModel = new DefaultListModel();
+                for (int i = 0; i < ar.getSizeOfArrayList(); i++) {
+                    defaultModel.addElement(ar.readFromArrayList(i) + ", " + ar.readFromArrayList(i + 1) + ", " + ar.readFromArrayList(i + 2));
+                    jList1.setModel(defaultModel);
+                    i = i + 2;
+                }
+            } else {
+                jTextField1.setText("Please choose correct dates for checkIn and CheckOut!");
+            }
+        } catch (Exception e) {
+            jTextField1.setText("Choose a valid date in both date fields!!");
         }
     }//GEN-LAST:event_UpdateAvailableListActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        boolean Confirmed = false;
-        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        int roomIndex = jList1.getSelectedIndex();
-        int guestIndex = jList2.getSelectedIndex();
-        
-        String str1 = (String) (jList1.getModel().getElementAt(roomIndex));
-        String[] tokens1 = str1.split(",");
-        int roomID = Integer.parseInt(tokens1[0]);
 
-        String str2 = (String) (jList2.getModel().getElementAt(guestIndex));
-        String[] tokens2 = str2.split(",");
-        int guestIdToRelation = Integer.parseInt(tokens2[0]);
-        
-        
-        c.createNewReservation((guestIdToRelation),(roomID), formatter.format(jDateChooser1.getDate()), formatter.format(jDateChooser2.getDate()), Confirmed);
+        try {
+            if (!jList1.isSelectionEmpty() && !jList2.isSelectionEmpty() && jDateChooser1.getDate().before(jDateChooser2.getDate())) {
+                boolean Confirmed = false;
+                Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+                int roomIndex = jList1.getSelectedIndex();
+                int guestIndex = jList2.getSelectedIndex();
+                String str1 = (String) (jList1.getModel().getElementAt(roomIndex));
+                String[] tokens1 = str1.split(",");
+                int roomID = Integer.parseInt(tokens1[0]);
+                String str2 = (String) (jList2.getModel().getElementAt(guestIndex));
+                String[] tokens2 = str2.split(",");
+                int guestIdToRelation = Integer.parseInt(tokens2[0]);
+                c.createNewReservation((guestIdToRelation), (roomID), formatter.format(jDateChooser1.getDate()), formatter.format(jDateChooser2.getDate()), Confirmed);
+            } else {
+                jTextField1.setText("Please choose correct dates, guests or rooms!");
+            }
+        } catch (Exception e) {
+            jTextField1.setText("Please do....something else ");
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int activityBookingId = 0;
-        String fName = fNameField.getText();
-        String lName = lNameField.getText();
-        String address = addressField.getText();
-        int phoneNo = Integer.parseInt(phoneNoField.getText());
-        String country = countryField.getText();
-        String email = eMailField.getText();
-        int passportNo = Integer.parseInt(passNoField.getText());
-        String travelAgency = travelAField.getText();
-        String pinCode = pinCodeField.getText();
-//        int activityBookingId = activityBookingId;
 
-        c.createNewGuest(fName, lName, address, phoneNo, email, country, passportNo, travelAgency, pinCode, activityBookingId);
-        ListOfGuests log = c.getListOfGuests();
-        DefaultListModel defaultModel = new DefaultListModel();
-        for (int i = 0; i < log.getSizeOfArrayList(); i++) {
-            defaultModel.addElement(log.readFromArrayList(i) + ", " + log.readFromArrayList(i + 1)
-                    + ", " + log.readFromArrayList(i + 2) + ", " + log.readFromArrayList(i + 3) + ", "
-                    + log.readFromArrayList(i + 4) + ", " + log.readFromArrayList(i + 5) + ", "
-                    + log.readFromArrayList(i + 6) + ", " + log.readFromArrayList(i + 7) + ", "
-                    + log.readFromArrayList(i + 8) + ", " + log.readFromArrayList(i + 9) + ", "
-                    + log.readFromArrayList(i + 10));
-            jList2.setModel(defaultModel);
-            i = i + 10;
+        try {
+            int activityBookingId = 0;
+            String fName = fNameField.getText();
+            String lName = lNameField.getText();
+            String address = addressField.getText();
+            int phoneNo = Integer.parseInt(phoneNoField.getText());
+            String country = countryField.getText();
+            String email = eMailField.getText();
+            int passportNo = Integer.parseInt(passNoField.getText());
+            String travelAgency = travelAField.getText();
+            String pinCode = pinCodeField.getText();
+
+            c.createNewGuest(fName, lName, address, phoneNo, email, country, passportNo, travelAgency, pinCode, activityBookingId);
+            ListOfGuests log = c.getListOfGuests();
+            DefaultListModel defaultModel = new DefaultListModel();
+            for (int i = 0; i < log.getSizeOfArrayList(); i++) {
+                defaultModel.addElement(log.readFromArrayList(i) + ", " + log.readFromArrayList(i + 1)
+                        + ", " + log.readFromArrayList(i + 2) + ", " + log.readFromArrayList(i + 3) + ", "
+                        + log.readFromArrayList(i + 4) + ", " + log.readFromArrayList(i + 5) + ", "
+                        + log.readFromArrayList(i + 6) + ", " + log.readFromArrayList(i + 7) + ", "
+                        + log.readFromArrayList(i + 8) + ", " + log.readFromArrayList(i + 9) + ", "
+                        + log.readFromArrayList(i + 10));
+                jList2.setModel(defaultModel);
+                i = i + 10;
+            }
+        } catch (Exception e) {
+            jTextField1.setText("Incorrect types in guest fields!");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -413,6 +448,7 @@ public class Presentation extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField lNameField;
     private javax.swing.JTextField passNoField;
