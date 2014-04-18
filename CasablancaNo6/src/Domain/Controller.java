@@ -6,9 +6,10 @@ package Domain;
  */
 
 import DataSource.DBFacade;
+import java.util.ArrayList;
 
-public class Controller {
-
+public class Controller implements InterfaceController {
+   
     private Relation re = new Relation();
     public AvailableRooms currentAvailableRooms;
     private ActivityReservation newActivity;
@@ -16,7 +17,13 @@ public class Controller {
     private Reservation currentReservation;   // order in focus
     private DBFacade dbf;  //ref.Variabel til instans af DBFacade
     DBFacade facade = new DBFacade();
-
+    //--XP--start//
+   
+//    private NewRoom newRoom;
+//    private boolean confirmation;        
+    private Relation allGuestsReservations;
+    //--XP--slut//
+            
     public Controller() {
         currentGuest = null; // // afhængig af navngivning i DBFacade?
         currentReservation = null;
@@ -54,17 +61,7 @@ public class Controller {
         return currentGuest;// hvad vi returnerer afhænger af om returntype er BOOLEAN, STRING eller guest til Gui  
     }
     
-    
-    
 
-
-// --------getGuests(int guestId)!
-    
-//    public Guests getGuestsId(int guestId, Guests g){
-//               
-//        return g; // returnerer guest fra GuestMapper via DBFacade   
-//            } 
-    
     
     public AvailableRooms getAvailableRooms(String checkIn, String checkOut) {
         currentAvailableRooms = new AvailableRooms(checkIn, checkOut);
@@ -84,4 +81,34 @@ public class Controller {
         facade.getListOfGuests(currentGuestList);
         return currentGuestList;
     }
+    
+    // --Start-- Nye metoder til TestDriven Programming //
+    
+    public boolean setNewDates(String checkIn, String checkOut){
+        
+        return dbf.setNewDates(checkIn, checkOut);
+    }
+            
+    public boolean setNewRoom(int reservationID, int roomId){
+        
+        return dbf.setNewRoom(reservationID, roomId);
+    }
+            
+    public boolean setConfirm(int reservationID, boolean confirmed){ // Boolean confirmed true/false = svarende til f.eks 0 eller 1 
+        
+        return dbf.setConfirm(reservationID, confirmed);
+    }
+    
+    public ArrayList<Object> getGuestsReservations(int guestId){   // guestId for at finde Gestens reservationer i guestReservation
+    
+        return dbf.getGuestsReservations(guestId);  
+    }
+
+    // --Slut-- Nye metoder til TestDriven Programming //
+
+
+
 }
+
+
+
